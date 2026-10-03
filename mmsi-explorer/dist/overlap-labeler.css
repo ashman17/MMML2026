@@ -1,0 +1,31 @@
+.labeler-link { color: var(--cyan); text-decoration: none; border: 1px solid var(--line); border-radius: 9px; padding: 8px 12px; }
+.label-main { max-width: 1300px; }
+.annotation-head { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 18px; color: var(--muted); margin-bottom: 18px; }
+.annotation-head strong { color: var(--text); }
+.progress-track { height: 8px; overflow: hidden; background: var(--panel); border-radius: 99px; }
+.progress-track div { width: 0; height: 100%; background: var(--green); transition: width .2s ease; }
+.annotation-workspace { display: grid; gap: 18px; }
+.annotation-images { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+.annotation-images figure { margin: 0; overflow: hidden; background: #05070a; border: 1px solid var(--line); border-radius: 14px; }
+.annotation-images img { display: block; width: 100%; height: min(52vh, 520px); object-fit: contain; }
+.annotation-images figcaption { padding: 7px 10px; color: var(--muted); font-size: .8rem; border-top: 1px solid var(--line); }
+.label-panel { display: grid; gap: 14px; padding: 17px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; }
+fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+legend, .notes-label { display: block; margin-bottom: 9px; color: var(--muted); font-size: .84rem; }
+.label-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 8px; }
+.label-grid button, .fraction-row button { position: relative; min-height: 76px; padding: 12px; text-align: left; color: var(--text); background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; }
+.label-grid button strong, .label-grid button span { display: block; }
+.label-grid button span { margin-top: 4px; color: var(--muted); font-size: .78rem; }
+.label-grid button.selected, .fraction-row button.selected { color: #12151b; background: var(--amber); border-color: var(--amber); }
+.label-grid button.selected span { color: #3e3527; }
+kbd { position: absolute; right: 8px; top: 7px; color: var(--muted); background: transparent; font: .72rem ui-monospace, monospace; }
+.fraction-row { display: flex; gap: 8px; }
+.fraction-row button { min-height: 40px; flex: 1; text-align: center; }
+fieldset:disabled { opacity: .35; }
+textarea { width: 100%; resize: vertical; padding: 10px; color: var(--text); background: var(--bg); border: 1px solid var(--line); border-radius: 9px; }
+.annotation-nav { display: flex; gap: 9px; }
+.annotation-nav button { padding: 10px 14px; color: var(--text); background: var(--panel); border: 1px solid var(--line); border-radius: 9px; }
+.annotation-nav .export-button { margin-left: auto; color: #12151b; background: var(--cyan); border-color: var(--cyan); font-weight: 750; }
+.privacy-note { margin: -8px 0 0; color: var(--muted); font-size: .78rem; }
+@media (max-width: 850px) { .annotation-images, .label-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 580px) { .annotation-images, .label-grid { grid-template-columns: 1fr; } .annotation-images img { height: 42vh; } .annotation-nav { flex-wrap: wrap; } }

@@ -1,0 +1,17 @@
+.DS_Store
+.env
+.venv/
+__pycache__/
+*.py[cod]
+
+# Generated data and experiment outputs
+artifacts/
+outputs/
+dist/assets/
+dist/records.json
+dist/overlap_annotation_sample.json
+
+# Large/local dependencies
+third_party/
+MMSI_Bench.parquet
+*.tar.gz

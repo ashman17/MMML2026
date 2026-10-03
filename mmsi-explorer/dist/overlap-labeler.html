@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MMSI Overlap Labeler</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="overlap-labeler.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">V</div>
+      <div><h1>Overlap Labeler</h1><p>Blinded verifier calibration set</p></div>
+    </div>
+    <a class="labeler-link" href="index.html">Dataset explorer</a>
+  </header>
+
+  <main class="label-main">
+    <section class="annotation-head">
+      <div><strong id="position">—</strong> <span id="progressText">loading</span></div>
+      <div class="progress-track"><div id="progressBar"></div></div>
+    </section>
+
+    <section id="status" class="status">Loading annotation sample…</section>
+    <section id="workspace" class="annotation-workspace" hidden>
+      <div class="annotation-images">
+        <figure><img id="imageA" alt="First view"><figcaption>View A</figcaption></figure>
+        <figure><img id="imageB" alt="Second view"><figcaption>View B</figcaption></figure>
+      </div>
+
+      <section class="label-panel">
+        <fieldset>
+          <legend>What relationship is visible?</legend>
+          <div class="label-grid" id="relationshipLabels">
+            <button data-value="overlap"><kbd>1</kbd><strong>Visible overlap</strong><span>The same physical content is visible in both.</span></button>
+            <button data-value="same_scene_no_overlap"><kbd>2</kbd><strong>Same scene, no overlap</strong><span>Related location, but no shared visible region.</span></button>
+            <button data-value="different_scene"><kbd>3</kbd><strong>Different scene</strong><span>The views do not depict the same place.</span></button>
+            <button data-value="uncertain"><kbd>4</kbd><strong>Uncertain</strong><span>Evidence is insufficient or ambiguous.</span></button>
+          </div>
+        </fieldset>
+
+        <fieldset id="fractionField" disabled>
+          <legend>Approximate shared image area</legend>
+          <div class="fraction-row" id="fractionLabels">
+            <button data-value="small">Small · &lt;25%</button>
+            <button data-value="medium">Medium · 25–50%</button>
+            <button data-value="large">Large · &gt;50%</button>
+          </div>
+        </fieldset>
+
+        <label class="notes-label">Optional note
+          <textarea id="notes" rows="2" placeholder="Ambiguity, repeated pattern, moving object…"></textarea>
+        </label>
+      </section>
+
+      <nav class="annotation-nav">
+        <button id="previous">← Previous</button>
+        <button id="next">Next unlabeled →</button>
+        <button id="export" class="export-button">Export JSON</button>
+      </nav>
+      <p class="privacy-note">Labels stay in this browser until exported. Pair identities and tool scores are hidden during annotation.</p>
+    </section>
+  </main>
+  <script src="overlap-labeler.js"></script>
+</body>
+</html>

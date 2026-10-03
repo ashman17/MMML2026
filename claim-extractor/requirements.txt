@@ -1,0 +1,4 @@
+pydantic>=2
+python-dotenv
+rich>=13
+requests>=2.28

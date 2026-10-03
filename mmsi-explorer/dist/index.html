@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browse and filter the MMSI-Bench multi-image spatial reasoning dataset.">
+  <title>MMSI-Bench Explorer</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0e13'/%3E%3Cpath d='M14 42 27 18l9 17 6-10 8 17' fill='none' stroke='%23f6b84b' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='27' cy='18' r='4' fill='%2379d6e8'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">M</div>
+      <div>
+        <h1>MMSI-Bench Explorer</h1>
+        <p>Multi-image spatial intelligence</p>
+      </div>
+    </div>
+    <div class="dataset-count"><strong id="totalCount">—</strong><span>questions</span></div>
+    <a class="labeler-link" href="overlap-labeler.html">Overlap labeler</a>
+  </header>
+
+  <main>
+    <section class="control-panel" aria-label="Dataset filters">
+      <div class="search-wrap">
+        <label for="search">Search questions and rationales</label>
+        <input id="search" type="search" placeholder="Try “camera”, “north”, or “fireplace”…" autocomplete="off">
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Category</span>
+        <div id="categoryFilters" class="chips" role="group" aria-label="Category"></div>
+      </div>
+
+      <div class="filter-row">
+        <div class="filter-group compact">
+          <span class="filter-label">Difficulty</span>
+          <div id="difficultyFilters" class="chips" role="group" aria-label="Difficulty">
+            <button class="chip active" data-difficulty="all">All</button>
+            <button class="chip" data-difficulty="easy">Easy</button>
+            <button class="chip" data-difficulty="medium">Medium</button>
+            <button class="chip" data-difficulty="hard">Hard</button>
+          </div>
+        </div>
+        <label class="toggle">
+          <input id="showAnswers" type="checkbox">
+          <span>Reveal answers</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="results-head">
+      <div><strong id="resultCount">—</strong> matching questions</div>
+      <select id="sort" aria-label="Sort questions">
+        <option value="id">Dataset order</option>
+        <option value="hardest">Hardest first</option>
+        <option value="easiest">Easiest first</option>
+        <option value="slowest">Longest human time</option>
+      </select>
+    </section>
+
+    <section id="status" class="status">Loading dataset…</section>
+    <section id="grid" class="question-grid" aria-live="polite"></section>
+
+    <nav class="pagination" aria-label="Results pages">
+      <button id="prevPage" type="button">← Previous</button>
+      <span id="pageLabel">Page —</span>
+      <button id="nextPage" type="button">Next →</button>
+    </nav>
+  </main>
+
+  <dialog id="detailDialog">
+    <div class="dialog-shell">
+      <button id="closeDialog" class="close-button" aria-label="Close">×</button>
+      <div id="detailContent"></div>
+    </div>
+  </dialog>
+
+  <template id="cardTemplate">
+    <article class="question-card">
+      <div class="card-meta">
+        <span class="question-id"></span>
+        <span class="difficulty-pill"></span>
+      </div>
+      <div class="thumb-strip"></div>
+      <span class="category"></span>
+      <h2 class="question"></h2>
+      <div class="answer-preview"></div>
+      <button class="open-detail" type="button">Inspect question <span aria-hidden="true">↗</span></button>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

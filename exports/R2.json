@@ -1,0 +1,669 @@
+{
+  "format": "mmml-review-v1",
+  "reviewer": "R2",
+  "sample_sha256": "50f9b9e764d736a1e3e0d78d762937eee2fe3ca2bdbb918d76fd23416d033eda",
+  "answers": [
+    {
+      "reviewer": "R2",
+      "item_id": "129",
+      "answer": "C",
+      "confidence": 4,
+      "seconds": 132.225,
+      "evidence_images": "1,2",
+      "explanation": "The viewpoint turns from south to southeast. So the item in image 2 is northeast of the extinguisher.",
+      "created_at": 1791145811.52948
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "169",
+      "answer": "D",
+      "confidence": 4,
+      "seconds": 51.154,
+      "evidence_images": "1,2",
+      "explanation": "Everything just looks closer without direction change",
+      "created_at": 1791144250.9194748
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "202",
+      "answer": "A",
+      "confidence": 3,
+      "seconds": 168.98,
+      "evidence_images": "1,2",
+      "explanation": "I think there is a chair in my front right even if we only look at image 2. That's said, the view turns left and the power outlet previously in our front is now front right of our view.",
+      "created_at": 1791145077.386684
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "237",
+      "answer": "A",
+      "confidence": 3,
+      "seconds": 107.487,
+      "evidence_images": "1,2",
+      "explanation": "There seems a white item in the middle of gray and orange building. I'm not sure, so I did not include that in the count.",
+      "created_at": 1791142760.793754
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "243",
+      "answer": "B",
+      "confidence": 5,
+      "seconds": 43.766,
+      "evidence_images": "1,2",
+      "explanation": "Coke is moving closer to milk away from handles",
+      "created_at": 1791144128.345421
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "259",
+      "answer": "A",
+      "confidence": 2,
+      "seconds": 102.455,
+      "evidence_images": "1,2",
+      "explanation": "The definition of the living room is ambiguous here: using the couch I'm assuming the person is in the living room and the living room is current towards the back left of the person. And then the view turns right, so now the living room is about behind the viewpoint.",
+      "created_at": 1791145542.552413
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "315",
+      "answer": "A",
+      "confidence": 5,
+      "seconds": 101.352,
+      "evidence_images": "1,2",
+      "explanation": "A small left rotation from north",
+      "created_at": 1791142862.165385
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "322",
+      "answer": "C",
+      "confidence": 4,
+      "seconds": 99.61099999999999,
+      "evidence_images": "1,2",
+      "explanation": "The anchor is the black car and it moves backward and right ward in the view, so the viewpoint is moving rear right",
+      "created_at": 1791144819.907043
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "391",
+      "answer": "A",
+      "confidence": 5,
+      "seconds": 57.762,
+      "evidence_images": "1,2",
+      "explanation": "Using the fridge as an anchor, the viewpoint turns left front, and the storage previously on the right front is now right back",
+      "created_at": 1791145352.832931
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "429",
+      "answer": "D",
+      "confidence": 5,
+      "seconds": 87.215,
+      "evidence_images": "1,2",
+      "explanation": "Using window doors as an anchor, the living room is previously on the front right, then the viewpoint turns left. So now the living room is still front but further right.",
+      "created_at": 1791145440.07156
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "449",
+      "answer": "C",
+      "confidence": 3,
+      "seconds": 211.948,
+      "evidence_images": "1,2",
+      "explanation": "I am not sure about the swimming pool mentioned in the prompt. The swing chair is in the front of black rectangular frame, and the lounge area is in the front right of the rectangular frame. So the swing chair is on the left.",
+      "created_at": 1791146447.68539
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "486",
+      "answer": "D",
+      "confidence": 4,
+      "seconds": 110.161,
+      "evidence_images": "1,2",
+      "explanation": "From north facing me and then rotate the north leftward gives roughly northwest",
+      "created_at": 1791142969.988811
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "488",
+      "answer": "D",
+      "confidence": 4,
+      "seconds": 111.822,
+      "evidence_images": "1,2",
+      "explanation": "Handles are rotated from left to away from the camera, which is  negative angles.",
+      "created_at": 1791144633.077302
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "494",
+      "answer": "B",
+      "confidence": 5,
+      "seconds": 46.969,
+      "evidence_images": "1,2",
+      "explanation": "There is no movement of the ground markers, so the car does not move.",
+      "created_at": 1791144724.9289112
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "545",
+      "answer": "A",
+      "confidence": 4,
+      "seconds": 60.722,
+      "evidence_images": "1,2",
+      "explanation": "The table in image 2 is similar to that on the right of image 1.",
+      "created_at": 1791144199.748564
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "549",
+      "answer": "B",
+      "confidence": 4,
+      "seconds": 271.686,
+      "evidence_images": "1,2",
+      "explanation": "The hand moves from up to down",
+      "created_at": 1791144481.863199
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "569",
+      "answer": "C",
+      "confidence": 4,
+      "seconds": 120.399,
+      "evidence_images": "1,2",
+      "explanation": "The mirror is on the right of the letters (bed) because the mirror faces the side of the bed or letters",
+      "created_at": 1791145931.946781
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "658",
+      "answer": "D",
+      "confidence": 4,
+      "seconds": 158.003,
+      "evidence_images": "1,2",
+      "explanation": "Pot and lamp are close to the side of fireplace in image 1. Using the white sofa chair as anchor, door is on the side, so the stairs are in the front.",
+      "created_at": 1791146228.203627
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "673",
+      "answer": "A",
+      "confidence": 5,
+      "seconds": 54.589,
+      "evidence_images": "1,2",
+      "explanation": "Using the mac as an anchor it moves from bottom right to top left, suggesting my answer.",
+      "created_at": 1791144870.924944
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "702",
+      "answer": "C",
+      "confidence": 1,
+      "seconds": 103.681,
+      "evidence_images": "1,2",
+      "explanation": "Option A and C are the same and I best answer would be 45 degrees clockwise around gravity using the chairs as an anchor in both images.",
+      "created_at": 1791145289.020921
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "738",
+      "answer": "B",
+      "confidence": 3,
+      "seconds": 255.316,
+      "evidence_images": "1,2",
+      "explanation": "Using the images and the lamp, the kitchen is between the two granite tables. I am assuming I am washing my hands in the sink when cooking, the dining area is on my back.",
+      "created_at": 1791146894.2719
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "740",
+      "answer": "B",
+      "confidence": 5,
+      "seconds": 114.005,
+      "evidence_images": "1,2",
+      "explanation": "Going doiwn the stiars, we can see that we have paintings in living room area on our right. In image 2 where the fruits are, the painting living room area is further away. So the fruit area is on the left side.",
+      "created_at": 1791146561.713419
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "768",
+      "answer": "D",
+      "confidence": 2,
+      "seconds": 302.696,
+      "evidence_images": "1,2,3,4,5,6,7",
+      "explanation": "This is ambiguous because there seems multiple chairs in image 2 4 and 7. In addition, I'm not sure if image 4 is taken facing the white board or back facing the white board.",
+      "created_at": 1791144090.595923
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "837",
+      "answer": "C",
+      "confidence": 1,
+      "seconds": 110.404,
+      "evidence_images": "1,2",
+      "explanation": "There seems to be no ground truth common items in both images as we are not sure which cabinets correspond to which.",
+      "created_at": 1791145187.8115358
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "842",
+      "answer": "C",
+      "confidence": 2,
+      "seconds": 136.691,
+      "evidence_images": "1,2",
+      "explanation": "Image 1 and image 2 does not have overlapping items, so I don't get useful info from combined. My answer comes from the shadow, and I assume the lights come from the window. So the shadow are back left and the window is assumed front right.",
+      "created_at": 1791145679.2639308
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "865",
+      "answer": "C",
+      "confidence": 4,
+      "seconds": 77.203,
+      "evidence_images": "1,2",
+      "explanation": "Using the curtain as an anchor, the fireplace in the living room faces kitchen area. So the kichen area is on the east.",
+      "created_at": 1791146638.9366798
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "870",
+      "answer": "A",
+      "confidence": 5,
+      "seconds": 144.11,
+      "evidence_images": "1,2",
+      "explanation": "Using the chair as the anchor in both images, the chair is in the front right of the cabinet. So, since the chair represents the study area, I arrived at my answer.",
+      "created_at": 1791146070.177011
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "875",
+      "answer": "B",
+      "confidence": 2,
+      "seconds": 218.332,
+      "evidence_images": "1,2",
+      "explanation": "I am assuming the images are not squeezed too much (evidence from the text and from the size of the furnitures), the white background poster look more like a square. However, I'm not too sure about my assumption.",
+      "created_at": 1791143256.473702
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "876",
+      "answer": "A",
+      "confidence": 4,
+      "seconds": 137.956,
+      "evidence_images": "1,2",
+      "explanation": "Using the larger books on the top third as an anchor in both images, I got that there are a total of 5 compartments. Using image 1, I found that the lower 2 compartments added together look the same height as the top third.",
+      "created_at": 1791143394.453387
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "894",
+      "answer": "B",
+      "confidence": 4,
+      "seconds": 89.057,
+      "evidence_images": "1,2,3,4,5,6",
+      "explanation": "Using the black furniture and bag strap as an anchor, we turn right from image 5 to 6. So the computer previously in front of us is now on our left.",
+      "created_at": 1791143787.8780742
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "957",
+      "answer": "D",
+      "confidence": 4,
+      "seconds": 130.348,
+      "evidence_images": "1,2",
+      "explanation": "Looking like bottom second is a bit more than 0.5. It also looks like the top two compartments added looks similar to the bottom two added. So the closes number just greater than (1+0.5)*2 = 0.3 is 0.35.",
+      "created_at": 1791143519.431367
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "980",
+      "answer": "B",
+      "confidence": 5,
+      "seconds": 115.986,
+      "evidence_images": "1,2,3",
+      "explanation": "I am using the cylindrical building as an anchor. It first moves from the left side of the view to the right side of the view, and finally comes closer. Therefore, the car is moving to the left, then forward.",
+      "created_at": 1791143630.4027772
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "991",
+      "answer": "D",
+      "confidence": 5,
+      "seconds": 39.236,
+      "evidence_images": "1,2",
+      "explanation": "People looks bigger and closer in the image, so the camera person is going forward",
+      "created_at": 1791144677.93341
+    }
+  ],
+  "traces": [
+    {
+      "reviewer": "R2",
+      "item_id": "129",
+      "first_bad_claim": "Incorrect that the wooden jar is not at the back of the piano.",
+      "claim_status": "incorrect",
+      "failure_type": "grounding",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791149287.346057
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "169",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "My mistake",
+      "created_at": 1791148626.736264
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "202",
+      "first_bad_claim": "The door is ahead left.",
+      "claim_status": "incorrect",
+      "failure_type": "spatial_logic",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791148994.700597
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "237",
+      "first_bad_claim": "The answer is correct but the reasoning is incorrect. Mistook the single yellow and orange building in image 2 as two buildings, but did not count the white one in image 1.",
+      "claim_status": "incorrect",
+      "failure_type": "grounding",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791148257.8465102
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "243",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791148576.996767
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "259",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791149163.32723
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "315",
+      "first_bad_claim": "The model answers the view direction not the object direction: misunderstanding of the prompt.",
+      "claim_status": "incorrect",
+      "failure_type": "spatial_logic",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791148330.8720179
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "322",
+      "first_bad_claim": "Answered position of second relative to first photo, but the question asks the other way around.",
+      "claim_status": "incorrect",
+      "failure_type": "reference_frame_or_motion",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791148919.678068
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "391",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791149114.846333
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "429",
+      "first_bad_claim": "The view does not turn around, just to the left.",
+      "claim_status": "incorrect",
+      "failure_type": "reference_frame_or_motion",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791149153.073257
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "449",
+      "first_bad_claim": "Maybe there is ambiguity in left and right of the area?",
+      "claim_status": "incorrect",
+      "failure_type": "unclear",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791149457.0986528
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "486",
+      "first_bad_claim": "The question asks \"to direction\", but the models answers \"from direction\"",
+      "claim_status": "incorrect",
+      "failure_type": "spatial_logic",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791148443.059871
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "488",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791148675.667711
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "494",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791148749.247263
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "545",
+      "first_bad_claim": "Picked a less important direction but missed more important right rotation.",
+      "claim_status": "incorrect",
+      "failure_type": "reference_frame_or_motion",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791148618.192599
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "549",
+      "first_bad_claim": "Probably mis-classificed which one is hand? Mistaken the hand as moving down left, but down slightly right.",
+      "claim_status": "incorrect",
+      "failure_type": "cross_view",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791148671.5142279
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "569",
+      "first_bad_claim": "The mirror reflects side of the bed",
+      "claim_status": "incorrect",
+      "failure_type": "grounding",
+      "evidence_images": "1,2",
+      "notes": "The orientation of the bed (which is front and which is back) is confusing",
+      "created_at": 1791149350.1609468
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "658",
+      "first_bad_claim": "The model did not correctly identify the relationship between the two images.",
+      "claim_status": "incorrect",
+      "failure_type": "reference_frame_or_motion",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791149389.2681751
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "673",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "My bad, misreading which reference we should take.",
+      "created_at": 1791148962.03876
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "702",
+      "first_bad_claim": "The walls are not the same wall.",
+      "claim_status": "incorrect",
+      "failure_type": "reference_frame_or_motion",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791149112.76178
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "738",
+      "first_bad_claim": "I think this is just perspective issue and the prompt does not well define where the person is facing.",
+      "claim_status": "incorrect",
+      "failure_type": "unclear",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791149597.228893
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "740",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791149521.8088682
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "768",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2,3,4,5,6,7",
+      "notes": "",
+      "created_at": 1791148575.852961
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "837",
+      "first_bad_claim": "The counter area is not obvious from image 2, but the model identified so.",
+      "claim_status": "incorrect",
+      "failure_type": "grounding",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791149032.8158238
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "842",
+      "first_bad_claim": "The claim that the white chair faces towards the dining table is incorrect. There is no evidence of similarity between the two images, so should be cannot be determined.",
+      "claim_status": "incorrect",
+      "failure_type": "other",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791149233.595123
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "865",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791149523.129008
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "870",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791149351.881502
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "875",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791148447.150764
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "876",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "My misunderstanding of the question.",
+      "created_at": 1791148485.867073
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "894",
+      "first_bad_claim": "This could be a trick question that there are multiple computer monitors in the frame.",
+      "claim_status": "incorrect",
+      "failure_type": "cross_view",
+      "evidence_images": "1,2,3,4,5,6",
+      "notes": "",
+      "created_at": 1791148570.539789
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "957",
+      "first_bad_claim": "Incorrect estimation that all compartments have the same height.",
+      "claim_status": "incorrect",
+      "failure_type": "spatial_logic",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791148522.40509
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "980",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2,3",
+      "notes": "",
+      "created_at": 1791148523.8788621
+    },
+    {
+      "reviewer": "R2",
+      "item_id": "991",
+      "first_bad_claim": "I'm not sure why this is incorrect. I think the model reasoning looks good.",
+      "claim_status": "incorrect",
+      "failure_type": "unclear",
+      "evidence_images": "1,2",
+      "notes": "I think the bench's answer is questionable, or we might want to look at what its reasoning.",
+      "created_at": 1791148746.8741481
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "id": 376,
+    "question_type": "Motion (Obj.)",
+    "gold": "A",
+    "n_images": 2,
+    "question": "The images are taken in a continuous first-person perspective. Is the pan being rotated? If so, in which direction is it being rotated?\nOptions: A: Rotated clockwise, B: Rotated counterclockwise, C: Flipped upside down, D: Not rotated",
+    "mirrored_question": "The images are taken in a continuous first-person perspective. Is the pan being rotated? If so, in which direction is it being rotated?\nOptions: A: Rotated counterclockwise, B: Rotated clockwise, C: Flipped upside down, D: Not rotated",
+    "shuffled_question": "The images are taken in a continuous first-person perspective. Is the pan being rotated? If so, in which direction is it being rotated?\nOptions: A: Rotated counterclockwise, B: Flipped upside down, C: Not rotated, D: Rotated clockwise",
+    "preds": {
+      "orig": "D",
+      "mirror": "B",
+      "reorder": "D",
+      "shuffle": "A"
+    },
+    "sc_preds": [
+      "D",
+      "D",
+      "D",
+      "D"
+    ]
+  },
+  {
+    "id": 562,
+    "question_type": "Positional Relationship (Obj.\u2013Obj.)",
+    "gold": "C",
+    "n_images": 2,
+    "question": "What is the direction of the desk lamp by the window relative to the desk lamp next to the portrait of a person (given that in two consecutively taken frames, the portrait of the person is to the right of the lamp next to it, and the two images overlap)?\nOptions: A: rear left, B: left, C: front right, D: right",
+    "mirrored_question": "What is the direction of the desk lamp by the window relative to the desk lamp next to the portrait of a person (given that in two consecutively taken frames, the portrait of the person is to the left of the lamp next to it, and the two images overlap)?\nOptions: A: rear right, B: right, C: front left, D: left",
+    "shuffled_question": "What is the direction of the desk lamp by the window relative to the desk lamp next to the portrait of a person (given that in two consecutively taken frames, the portrait of the person is to the right of the lamp next to it, and the two images overlap)?\nOptions: A: left, B: rear left, C: right, D: front right",
+    "preds": {
+      "orig": "B",
+      "mirror": "D",
+      "reorder": "B",
+      "shuffle": "B"
+    },
+    "sc_preds": [
+      "A",
+      "B",
+      "B",
+      "B"
+    ]
+  },
+  {
+    "id": 155,
+    "question_type": "Attribute (Meas.)",
+    "gold": "C",
+    "n_images": 2,
+    "question": "Comparing twice the height of the yellow cup with a toothbrush inserted, placed on the table at the far left in Figure 1, to the height of the electric toothbrush (excluding the base) in Figure 2, which one is taller?\nOptions: A: Sometimes the blue cup, sometimes the electric toothbrush, B: The same height, C: Electric toothbrush, D: Yellow cup",
+    "mirrored_question": "Comparing twice the height of the yellow cup with a toothbrush inserted, placed on the table at the far right in Figure 1, to the height of the electric toothbrush (excluding the base) in Figure 2, which one is taller?\nOptions: A: Sometimes the blue cup, sometimes the electric toothbrush, B: The same height, C: Electric toothbrush, D: Yellow cup",
+    "shuffled_question": "Comparing twice the height of the yellow cup with a toothbrush inserted, placed on the table at the far left in Figure 1, to the height of the electric toothbrush (excluding the base) in Figure 2, which one is taller?\nOptions: A: The same height, B: Yellow cup, C: Sometimes the blue cup, sometimes the electric toothbrush, D: Electric toothbrush",
+    "preds": {
+      "orig": "D",
+      "mirror": "C",
+      "reorder": "C",
+      "shuffle": "D"
+    },
+    "sc_preds": [
+      "D",
+      "D",
+      "C",
+      "B"
+    ]
+  }
+]

@@ -1,0 +1,7 @@
+metric,estimate,ci_low,ci_high
+original_accuracy_percent,19.0,11.975000000000001,27.0
+disagreement_auroc,0.5760233918128655,0.42982994135154057,0.6921875000000001
+transform_vote_minus_self_consistency_pp,3.0,-5.0,11.0
+mirror_flip_rate_percent,31.08108108108108,21.62162162162162,40.54054054054054
+reorder_flip_rate_percent,31.0,22.0,40.0
+shuffle_flip_rate_percent,42.0,32.975,52.0

@@ -1,0 +1,21 @@
+{
+  "id": 376,
+  "question_type": "Motion (Obj.)",
+  "gold": "A",
+  "n_images": 2,
+  "question": "The images are taken in a continuous first-person perspective. Is the pan being rotated? If so, in which direction is it being rotated?\nOptions: A: Rotated clockwise, B: Rotated counterclockwise, C: Flipped upside down, D: Not rotated",
+  "mirrored_question": "The images are taken in a continuous first-person perspective. Is the pan being rotated? If so, in which direction is it being rotated?\nOptions: A: Rotated counterclockwise, B: Rotated clockwise, C: Flipped upside down, D: Not rotated",
+  "shuffled_question": "The images are taken in a continuous first-person perspective. Is the pan being rotated? If so, in which direction is it being rotated?\nOptions: A: Rotated counterclockwise, B: Flipped upside down, C: Not rotated, D: Rotated clockwise",
+  "preds": {
+    "orig": "D",
+    "mirror": "B",
+    "reorder": "D",
+    "shuffle": "A"
+  },
+  "sc_preds": [
+    "D",
+    "D",
+    "D",
+    "D"
+  ]
+}

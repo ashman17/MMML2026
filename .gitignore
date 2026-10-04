@@ -1,0 +1,8 @@
+.venv/
+.env.local
+.env
+data/
+runs/
+reports/
+exports/
+__pycache__/

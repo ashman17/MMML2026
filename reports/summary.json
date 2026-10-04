@@ -1,0 +1,129 @@
+{
+  "sample_n": 66,
+  "complete_human_pairs": 0,
+  "human_agreement_on_pairs": null,
+  "human_disagreements_n": 0,
+  "overall": {
+    "human_judgments_n": 1,
+    "human_accuracy": 1.0,
+    "model_images_n": 66,
+    "model_images_accuracy": 0.3939393939393939,
+    "both_humans_correct_model_wrong_n": 0
+  },
+  "categories": {
+    "Attribute (Appr.)": {
+      "n": 6,
+      "model_images_n": 6,
+      "model_images_accuracy": 0.3333333333333333,
+      "human_judgments_n": 1,
+      "human_accuracy": 1.0,
+      "human_correct_model_wrong_n": 0
+    },
+    "Attribute (Meas.)": {
+      "n": 6,
+      "model_images_n": 6,
+      "model_images_accuracy": 0.6666666666666666,
+      "human_judgments_n": 0,
+      "human_accuracy": null,
+      "human_correct_model_wrong_n": 0
+    },
+    "MSR": {
+      "n": 6,
+      "model_images_n": 6,
+      "model_images_accuracy": 0.5,
+      "human_judgments_n": 0,
+      "human_accuracy": null,
+      "human_correct_model_wrong_n": 0
+    },
+    "Motion (Cam.)": {
+      "n": 6,
+      "model_images_n": 6,
+      "model_images_accuracy": 0.3333333333333333,
+      "human_judgments_n": 0,
+      "human_accuracy": null,
+      "human_correct_model_wrong_n": 0
+    },
+    "Motion (Obj.)": {
+      "n": 6,
+      "model_images_n": 6,
+      "model_images_accuracy": 0.3333333333333333,
+      "human_judgments_n": 0,
+      "human_accuracy": null,
+      "human_correct_model_wrong_n": 0
+    },
+    "Positional Relationship (Cam.\u2013Cam.)": {
+      "n": 6,
+      "model_images_n": 6,
+      "model_images_accuracy": 0.5,
+      "human_judgments_n": 0,
+      "human_accuracy": null,
+      "human_correct_model_wrong_n": 0
+    },
+    "Positional Relationship (Cam.\u2013Obj.)": {
+      "n": 6,
+      "model_images_n": 6,
+      "model_images_accuracy": 0.5,
+      "human_judgments_n": 0,
+      "human_accuracy": null,
+      "human_correct_model_wrong_n": 0
+    },
+    "Positional Relationship (Cam.\u2013Reg.)": {
+      "n": 6,
+      "model_images_n": 6,
+      "model_images_accuracy": 0.3333333333333333,
+      "human_judgments_n": 0,
+      "human_accuracy": null,
+      "human_correct_model_wrong_n": 0
+    },
+    "Positional Relationship (Obj.\u2013Obj.)": {
+      "n": 6,
+      "model_images_n": 6,
+      "model_images_accuracy": 0.16666666666666666,
+      "human_judgments_n": 0,
+      "human_accuracy": null,
+      "human_correct_model_wrong_n": 0
+    },
+    "Positional Relationship (Obj.\u2013Reg.)": {
+      "n": 6,
+      "model_images_n": 6,
+      "model_images_accuracy": 0.16666666666666666,
+      "human_judgments_n": 0,
+      "human_accuracy": null,
+      "human_correct_model_wrong_n": 0
+    },
+    "Positional Relationship (Reg.\u2013Reg.)": {
+      "n": 6,
+      "model_images_n": 6,
+      "model_images_accuracy": 0.5,
+      "human_judgments_n": 0,
+      "human_accuracy": null,
+      "human_correct_model_wrong_n": 0
+    }
+  },
+  "sets": {
+    "A": {
+      "n": 33,
+      "completed_human_pairs": 0,
+      "model_images_n": 33
+    },
+    "B": {
+      "n": 33,
+      "completed_human_pairs": 0,
+      "model_images_n": 33
+    }
+  },
+  "difficulties": {
+    "easy": {
+      "n": 22,
+      "model_images_n": 22
+    },
+    "medium": {
+      "n": 22,
+      "model_images_n": 22
+    },
+    "hard": {
+      "n": 22,
+      "model_images_n": 22
+    }
+  }
+}

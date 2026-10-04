@@ -1,0 +1,669 @@
+{
+  "format": "mmml-review-v1",
+  "reviewer": "R1",
+  "sample_sha256": "50f9b9e764d736a1e3e0d78d762937eee2fe3ca2bdbb918d76fd23416d033eda",
+  "answers": [
+    {
+      "reviewer": "R1",
+      "item_id": "129",
+      "answer": "C",
+      "confidence": 3,
+      "seconds": 39.324,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791072647.0127413
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "169",
+      "answer": "D",
+      "confidence": 1,
+      "seconds": 53.435,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791065428.2392082
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "202",
+      "answer": "A",
+      "confidence": 5,
+      "seconds": 19.941,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791072388.7138064
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "237",
+      "answer": "B",
+      "confidence": 5,
+      "seconds": 394.681,
+      "evidence_images": "1,2",
+      "explanation": "Dark red building may count as 2",
+      "created_at": 1791061132.2651386
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "243",
+      "answer": "A",
+      "confidence": 4,
+      "seconds": 20.449,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791062507.3433034
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "259",
+      "answer": "B",
+      "confidence": 5,
+      "seconds": 16.378,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791072542.0515141
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "315",
+      "answer": "A",
+      "confidence": 3,
+      "seconds": 19.354,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791062185.7647703
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "322",
+      "answer": "C",
+      "confidence": 4,
+      "seconds": 102.687,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791072347.0796554
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "391",
+      "answer": "A",
+      "confidence": 4,
+      "seconds": 13.375,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791072502.0876627
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "429",
+      "answer": "D",
+      "confidence": 3,
+      "seconds": 23.501,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791072525.6292996
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "449",
+      "answer": "D",
+      "confidence": 3,
+      "seconds": 41.963,
+      "evidence_images": "1,2",
+      "explanation": "It's front right",
+      "created_at": 1791072785.7745526
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "486",
+      "answer": "D",
+      "confidence": 2,
+      "seconds": 39.154,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791062228.6562626
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "488",
+      "answer": "D",
+      "confidence": 3,
+      "seconds": 58.35,
+      "evidence_images": "1,2",
+      "explanation": "Ambiguous \"negative angle\"",
+      "created_at": 1791065499.716751
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "494",
+      "answer": "B",
+      "confidence": 3,
+      "seconds": 102.706,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791065631.5870082
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "545",
+      "answer": "A",
+      "confidence": 1,
+      "seconds": 55.203,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791065374.7748685
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "549",
+      "answer": "B",
+      "confidence": 5,
+      "seconds": 13.063,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791065441.3534694
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "569",
+      "answer": "D",
+      "confidence": 4,
+      "seconds": 31.998,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791072679.0337973
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "658",
+      "answer": "D",
+      "confidence": 5,
+      "seconds": 25.14,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791072743.765427
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "673",
+      "answer": "D",
+      "confidence": 5,
+      "seconds": 21.652,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791072368.7512333
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "702",
+      "answer": "D",
+      "confidence": 5,
+      "seconds": 82.858,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791072488.6885395
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "738",
+      "answer": "A",
+      "confidence": 1,
+      "seconds": 79.669,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791072932.2090158
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "740",
+      "answer": "B",
+      "confidence": 4,
+      "seconds": 35.627,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791072821.435775
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "768",
+      "answer": "D",
+      "confidence": 5,
+      "seconds": 79.966,
+      "evidence_images": "1,2,3,4,5,6,7",
+      "explanation": "",
+      "created_at": 1791062486.8626237
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "837",
+      "answer": "D",
+      "confidence": 5,
+      "seconds": 17.062,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791072405.8088186
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "842",
+      "answer": "C",
+      "confidence": 1,
+      "seconds": 65.597,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791072607.6690722
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "865",
+      "answer": "C",
+      "confidence": 3,
+      "seconds": 31.06,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791072852.5213904
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "870",
+      "answer": "B",
+      "confidence": 5,
+      "seconds": 39.546,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791072718.6025777
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "875",
+      "answer": "B",
+      "confidence": 5,
+      "seconds": 20.772,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791062249.459666
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "876",
+      "answer": "D",
+      "confidence": 4,
+      "seconds": 27.512,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791062277.0059443
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "894",
+      "answer": "C",
+      "confidence": 3,
+      "seconds": 80.499,
+      "evidence_images": "1,2,3,4,5,6",
+      "explanation": "Could also be front right depending on the angle",
+      "created_at": 1791062406.8650656
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "957",
+      "answer": "D",
+      "confidence": 3,
+      "seconds": 27.384,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791062304.4260852
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "980",
+      "answer": "B",
+      "confidence": 5,
+      "seconds": 21.891,
+      "evidence_images": "1,2,3",
+      "explanation": "",
+      "created_at": 1791062326.3528597
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "991",
+      "answer": "D",
+      "confidence": 5,
+      "seconds": 29.123,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791065528.8529088
+    }
+  ],
+  "traces": [
+    {
+      "reviewer": "R1",
+      "item_id": "129",
+      "first_bad_claim": "Jar is in extinguisher room, not piano room",
+      "claim_status": "incorrect",
+      "failure_type": "spatial_logic",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791075001.8623407
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "169",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791074216.1438658
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "202",
+      "first_bad_claim": "",
+      "claim_status": "incorrect",
+      "failure_type": "cross_view",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791074675.2614295
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "237",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791073371.6402488
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "243",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791074184.2754846
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "259",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791074906.3705854
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "315",
+      "first_bad_claim": "",
+      "claim_status": "incorrect",
+      "failure_type": "spatial_logic",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791073395.8549998
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "322",
+      "first_bad_claim": "Camera is actually moving backwards",
+      "claim_status": "incorrect",
+      "failure_type": "reference_frame_or_motion",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791074376.0624173
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "391",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791074827.2429147
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "429",
+      "first_bad_claim": "The object to focus on was the lamp",
+      "claim_status": "incorrect",
+      "failure_type": "spatial_logic",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791074867.4961016
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "449",
+      "first_bad_claim": "No reasoning",
+      "claim_status": "incorrect",
+      "failure_type": "unclear",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791075118.9691691
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "486",
+      "first_bad_claim": "",
+      "claim_status": "incorrect",
+      "failure_type": "spatial_logic",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791073412.3350935
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "488",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791074241.7053294
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "494",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791074342.5716228
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "545",
+      "first_bad_claim": "",
+      "claim_status": "incorrect",
+      "failure_type": "cross_view",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791074206.274336
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "549",
+      "first_bad_claim": "",
+      "claim_status": "incorrect",
+      "failure_type": "grounding",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791074230.9384851
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "569",
+      "first_bad_claim": "Incorrect spatial relationships",
+      "claim_status": "incorrect",
+      "failure_type": "spatial_logic",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791075036.2994583
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "658",
+      "first_bad_claim": "Cross-view reasoning is absent.",
+      "claim_status": "incorrect",
+      "failure_type": "cross_view",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791075103.3592253
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "673",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791074378.9476273
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "702",
+      "first_bad_claim": "Too much rotation",
+      "claim_status": "incorrect",
+      "failure_type": "cross_view",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791074820.6082811
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "738",
+      "first_bad_claim": "No reasoning",
+      "claim_status": "incorrect",
+      "failure_type": "unclear",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791075141.2696936
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "740",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791075121.7875073
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "768",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2,3,4,5,6,7",
+      "notes": "",
+      "created_at": 1791074181.8123224
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "837",
+      "first_bad_claim": "Actually not possible to cross-reference the images.",
+      "claim_status": "incorrect",
+      "failure_type": "cross_view",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791074736.6144125
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "842",
+      "first_bad_claim": "Chair is not in the first frame; cannot cross-reference views.",
+      "claim_status": "incorrect",
+      "failure_type": "grounding",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791074955.6851957
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "865",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791075124.9610493
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "870",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791075052.8429039
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "875",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791073830.113127
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "876",
+      "first_bad_claim": "Only 5 compartments",
+      "claim_status": "unsupported",
+      "failure_type": "reference_frame_or_motion",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791073872.011583
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "894",
+      "first_bad_claim": "Mistook chair for monitor",
+      "claim_status": "incorrect",
+      "failure_type": "grounding",
+      "evidence_images": "1,2,3,4,5,6",
+      "notes": "",
+      "created_at": 1791074146.5201044
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "957",
+      "first_bad_claim": "Only 4 components",
+      "claim_status": "incorrect",
+      "failure_type": "cross_view",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791073898.5482008
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "980",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2,3",
+      "notes": "",
+      "created_at": 1791074104.2161994
+    },
+    {
+      "reviewer": "R1",
+      "item_id": "991",
+      "first_bad_claim": "\"Person\" unclear; interpreted as the camera-person and not the subjects in frame",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791074282.5362384
+    }
+  ]
+}

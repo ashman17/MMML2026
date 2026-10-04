@@ -1,0 +1,6 @@
+__pycache__/
+.cache/
+.mplconfig/
+*.jpg
+results_*/examples/**/*.png
+api_cache.jsonl

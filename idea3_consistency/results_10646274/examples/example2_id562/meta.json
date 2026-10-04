@@ -1,0 +1,21 @@
+{
+  "id": 562,
+  "question_type": "Positional Relationship (Obj.\u2013Obj.)",
+  "gold": "C",
+  "n_images": 2,
+  "question": "What is the direction of the desk lamp by the window relative to the desk lamp next to the portrait of a person (given that in two consecutively taken frames, the portrait of the person is to the right of the lamp next to it, and the two images overlap)?\nOptions: A: rear left, B: left, C: front right, D: right",
+  "mirrored_question": "What is the direction of the desk lamp by the window relative to the desk lamp next to the portrait of a person (given that in two consecutively taken frames, the portrait of the person is to the left of the lamp next to it, and the two images overlap)?\nOptions: A: rear right, B: right, C: front left, D: left",
+  "shuffled_question": "What is the direction of the desk lamp by the window relative to the desk lamp next to the portrait of a person (given that in two consecutively taken frames, the portrait of the person is to the right of the lamp next to it, and the two images overlap)?\nOptions: A: left, B: rear left, C: right, D: front right",
+  "preds": {
+    "orig": "B",
+    "mirror": "D",
+    "reorder": "B",
+    "shuffle": "B"
+  },
+  "sc_preds": [
+    "A",
+    "B",
+    "B",
+    "B"
+  ]
+}

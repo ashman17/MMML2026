@@ -1,0 +1,9 @@
+variant,position,count,share_percent,n
+orig,A,11,11.0,100
+orig,B,32,32.0,100
+orig,C,23,23.0,100
+orig,D,34,34.0,100
+shuffle,A,13,13.0,100
+shuffle,B,34,34.0,100
+shuffle,C,23,23.0,100
+shuffle,D,30,30.0,100

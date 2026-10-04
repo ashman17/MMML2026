@@ -1,0 +1,21 @@
+{
+  "id": 155,
+  "question_type": "Attribute (Meas.)",
+  "gold": "C",
+  "n_images": 2,
+  "question": "Comparing twice the height of the yellow cup with a toothbrush inserted, placed on the table at the far left in Figure 1, to the height of the electric toothbrush (excluding the base) in Figure 2, which one is taller?\nOptions: A: Sometimes the blue cup, sometimes the electric toothbrush, B: The same height, C: Electric toothbrush, D: Yellow cup",
+  "mirrored_question": "Comparing twice the height of the yellow cup with a toothbrush inserted, placed on the table at the far right in Figure 1, to the height of the electric toothbrush (excluding the base) in Figure 2, which one is taller?\nOptions: A: Sometimes the blue cup, sometimes the electric toothbrush, B: The same height, C: Electric toothbrush, D: Yellow cup",
+  "shuffled_question": "Comparing twice the height of the yellow cup with a toothbrush inserted, placed on the table at the far left in Figure 1, to the height of the electric toothbrush (excluding the base) in Figure 2, which one is taller?\nOptions: A: The same height, B: Yellow cup, C: Sometimes the blue cup, sometimes the electric toothbrush, D: Electric toothbrush",
+  "preds": {
+    "orig": "D",
+    "mirror": "C",
+    "reorder": "C",
+    "shuffle": "D"
+  },
+  "sc_preds": [
+    "D",
+    "D",
+    "C",
+    "B"
+  ]
+}

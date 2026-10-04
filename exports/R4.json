@@ -1,0 +1,338 @@
+{
+  "format": "mmml-review-v1",
+  "reviewer": "R4",
+  "sample_sha256": "50f9b9e764d736a1e3e0d78d762937eee2fe3ca2bdbb918d76fd23416d033eda",
+  "answers": [
+    {
+      "reviewer": "R4",
+      "item_id": "1",
+      "answer": "B",
+      "confidence": 3,
+      "seconds": 64.307,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791084846.0105312
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "112",
+      "answer": "A",
+      "confidence": 3,
+      "seconds": 62.126,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791084258.508575
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "156",
+      "answer": "C",
+      "confidence": 3,
+      "seconds": 46.103,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791085760.643299
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "157",
+      "answer": "A",
+      "confidence": 2,
+      "seconds": 58.288,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791085714.5069098
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "20",
+      "answer": "A",
+      "confidence": 3,
+      "seconds": 15.557,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791084196.360723
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "207",
+      "answer": "B",
+      "confidence": 3,
+      "seconds": 82.021,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791084355.640214
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "212",
+      "answer": "D",
+      "confidence": 3,
+      "seconds": 33.167,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791084781.660876
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "270",
+      "answer": "B",
+      "confidence": 3,
+      "seconds": 36.587,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791085797.252019
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "285",
+      "answer": "B",
+      "confidence": 5,
+      "seconds": 13.601,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791084903.3771951
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "382",
+      "answer": "A",
+      "confidence": 3,
+      "seconds": 36.944,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791085492.347923
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "389",
+      "answer": "C",
+      "confidence": 3,
+      "seconds": 15.073,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791084273.595433
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "41",
+      "answer": "C",
+      "confidence": 4,
+      "seconds": 244.381,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791085300.8970938
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "423",
+      "answer": "B",
+      "confidence": 4,
+      "seconds": 65.556,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791085633.013359
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "50",
+      "answer": "C",
+      "confidence": 4,
+      "seconds": 13.91,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791085056.475553
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "546",
+      "answer": "D",
+      "confidence": 4,
+      "seconds": 16.234,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791084862.261322
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "559",
+      "answer": "A",
+      "confidence": 3,
+      "seconds": 26.106,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791084929.501855
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "579",
+      "answer": "A",
+      "confidence": 3,
+      "seconds": 75.057,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791085567.431923
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "593",
+      "answer": "D",
+      "confidence": 4,
+      "seconds": 30.556,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791085455.387049
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "615",
+      "answer": "C",
+      "confidence": 3,
+      "seconds": 37.685,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791085338.598659
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "62",
+      "answer": "B",
+      "confidence": 3,
+      "seconds": 27.418,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791085866.179137
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "621",
+      "answer": "D",
+      "confidence": 3,
+      "seconds": 23.161,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791085656.1998231
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "633",
+      "answer": "A",
+      "confidence": 3,
+      "seconds": 52.328,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791084180.791109
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "636",
+      "answer": "A",
+      "confidence": 3,
+      "seconds": 83.85,
+      "evidence_images": "1,2,3,4",
+      "explanation": "",
+      "created_at": 1791084747.934426
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "716",
+      "answer": "B",
+      "confidence": 4,
+      "seconds": 97.149,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791084452.815556
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "735",
+      "answer": "C",
+      "confidence": 4,
+      "seconds": 41.474,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791085838.7475781
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "767",
+      "answer": "A",
+      "confidence": 2,
+      "seconds": 54.232,
+      "evidence_images": "1,2,3,4,5,6,7",
+      "explanation": "",
+      "created_at": 1791084507.268168
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "794",
+      "answer": "A",
+      "confidence": 3,
+      "seconds": 35.178,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791085373.7954361
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "819",
+      "answer": "A",
+      "confidence": 3,
+      "seconds": 156.64,
+      "evidence_images": "1,2,3,4,5,6",
+      "explanation": "",
+      "created_at": 1791084664.0418482
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "87",
+      "answer": "D",
+      "confidence": 3,
+      "seconds": 26.451,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791085042.5472908
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "929",
+      "answer": "C",
+      "confidence": 4,
+      "seconds": 21.941,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791084951.461083
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "930",
+      "answer": "D",
+      "confidence": 3,
+      "seconds": 50.991,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791085424.813191
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "98",
+      "answer": "D",
+      "confidence": 3,
+      "seconds": 64.598,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791085016.076936
+    },
+    {
+      "reviewer": "R4",
+      "item_id": "992",
+      "answer": "B",
+      "confidence": 3,
+      "seconds": 27.472,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791084889.7580018
+    }
+  ],
+  "traces": []
+}

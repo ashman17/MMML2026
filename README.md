@@ -24,7 +24,6 @@ Answer the questions as a human reviewer, then compare with the model; explain i
 
 Relaunching the page:
 ```bash
-cd /data/MMML
 .venv/bin/python workflow.py serve --host 127.0.0.1 --port 8766 --provider litellm --model gpt-5.6-terra
 ```
 

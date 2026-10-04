@@ -368,7 +368,7 @@
     {
       "reviewer": "R3",
       "item_id": "157",
-      "first_bad_claim": "",
+      "first_bad_claim": "The model confused first-hand and second-hand perspective.",
       "claim_status": "unsupported",
       "failure_type": "none",
       "evidence_images": "1,2",
@@ -588,7 +588,7 @@
     {
       "reviewer": "R3",
       "item_id": "767",
-      "first_bad_claim": "",
+      "first_bad_claim": "The trash can is by the door on the wall behind the camera\u2019s initial view",
       "claim_status": "incorrect",
       "failure_type": "reference_frame_or_motion",
       "evidence_images": "1,2,3,4,5,6,7",

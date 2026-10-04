@@ -1,0 +1,12 @@
+category_en,1,2,3+,All
+Attr: Appearance,0,3,0,3
+Motion: Cam,9,2,0,11
+Motion: Obj,5,0,0,5
+Multi-step,18,8,24,50
+Pos: Cam-Cam,52,33,0,85
+Pos: Cam-Obj,14,69,0,83
+Pos: Cam-Reg,7,60,0,67
+Pos: Obj-Obj,2,4,0,6
+Pos: Obj-Reg,2,10,0,12
+Pos: Reg-Reg,0,2,0,2
+All,109,191,24,324

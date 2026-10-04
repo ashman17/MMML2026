@@ -1,0 +1,6 @@
+x,y,spearman_rho,p_value,n
+trace_words,difficulty_ordinal,0.1187,0.0002,1000
+duration,difficulty_ordinal,0.545,0.0,1000
+trace_words,duration,0.2803,0.0,1000
+stem_words,trace_words,0.3537,0.0,1000
+n_bridging,difficulty_ordinal,0.0231,0.465,1000

@@ -1,0 +1,4 @@
+rule,explore_opportunities,explore_correct,explore_correct_rate,p_less_than_chance,p_holm,selected
+abstain,53,31,0.5849056603773585,0.9999999482296013,1.0,False
+format_outlier,63,31,0.49206349206349204,0.9999904240392676,1.0,False
+sometimes,29,0,0.0,0.00023810945356001997,0.0007143283606800599,True

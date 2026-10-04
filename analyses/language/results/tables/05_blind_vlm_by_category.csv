@@ -1,0 +1,67 @@
+scope,condition,category_en,n,accuracy
+all,original,Pos: Cam-Cam,93,0.3333333333333333
+all,original,Pos: Cam-Obj,86,0.19767441860465115
+all,original,Pos: Cam-Reg,83,0.24096385542168675
+all,original,Pos: Obj-Obj,94,0.30851063829787234
+all,original,Pos: Obj-Reg,85,0.35294117647058826
+all,original,Pos: Reg-Reg,81,0.25925925925925924
+all,original,Attr: Measure,64,0.25
+all,original,Attr: Appearance,66,0.22727272727272727
+all,original,Motion: Cam,74,0.17567567567567569
+all,original,Motion: Obj,76,0.3684210526315789
+all,original,Multi-step,198,0.21212121212121213
+all,options_only,Pos: Cam-Cam,93,0.3225806451612903
+all,options_only,Pos: Cam-Obj,86,0.2558139534883721
+all,options_only,Pos: Cam-Reg,83,0.2289156626506024
+all,options_only,Pos: Obj-Obj,94,0.3191489361702128
+all,options_only,Pos: Obj-Reg,85,0.27058823529411763
+all,options_only,Pos: Reg-Reg,81,0.32098765432098764
+all,options_only,Attr: Measure,64,0.25
+all,options_only,Attr: Appearance,66,0.25757575757575757
+all,options_only,Motion: Cam,74,0.2702702702702703
+all,options_only,Motion: Obj,76,0.34210526315789475
+all,options_only,Multi-step,198,0.23737373737373738
+all,circular_consensus,Pos: Cam-Cam,93,0.3548387096774194
+all,circular_consensus,Pos: Cam-Obj,86,0.1744186046511628
+all,circular_consensus,Pos: Cam-Reg,83,0.26506024096385544
+all,circular_consensus,Pos: Obj-Obj,94,0.3191489361702128
+all,circular_consensus,Pos: Obj-Reg,85,0.36470588235294116
+all,circular_consensus,Pos: Reg-Reg,81,0.2345679012345679
+all,circular_consensus,Attr: Measure,64,0.34375
+all,circular_consensus,Attr: Appearance,66,0.2878787878787879
+all,circular_consensus,Motion: Cam,74,0.20270270270270271
+all,circular_consensus,Motion: Obj,76,0.34210526315789475
+all,circular_consensus,Multi-step,198,0.18181818181818182
+confirm,original,Pos: Cam-Cam,47,0.2978723404255319
+confirm,original,Pos: Cam-Obj,43,0.11627906976744186
+confirm,original,Pos: Cam-Reg,42,0.19047619047619047
+confirm,original,Pos: Obj-Obj,47,0.2978723404255319
+confirm,original,Pos: Obj-Reg,42,0.40476190476190477
+confirm,original,Pos: Reg-Reg,40,0.2
+confirm,original,Attr: Measure,32,0.25
+confirm,original,Attr: Appearance,33,0.18181818181818182
+confirm,original,Motion: Cam,37,0.1891891891891892
+confirm,original,Motion: Obj,38,0.3684210526315789
+confirm,original,Multi-step,99,0.2828282828282828
+confirm,options_only,Pos: Cam-Cam,47,0.3404255319148936
+confirm,options_only,Pos: Cam-Obj,43,0.20930232558139536
+confirm,options_only,Pos: Cam-Reg,42,0.16666666666666666
+confirm,options_only,Pos: Obj-Obj,47,0.3617021276595745
+confirm,options_only,Pos: Obj-Reg,42,0.2619047619047619
+confirm,options_only,Pos: Reg-Reg,40,0.325
+confirm,options_only,Attr: Measure,32,0.25
+confirm,options_only,Attr: Appearance,33,0.15151515151515152
+confirm,options_only,Motion: Cam,37,0.2702702702702703
+confirm,options_only,Motion: Obj,38,0.3157894736842105
+confirm,options_only,Multi-step,99,0.1717171717171717
+confirm,circular_consensus,Pos: Cam-Cam,47,0.2765957446808511
+confirm,circular_consensus,Pos: Cam-Obj,43,0.16279069767441862
+confirm,circular_consensus,Pos: Cam-Reg,42,0.21428571428571427
+confirm,circular_consensus,Pos: Obj-Obj,47,0.2978723404255319
+confirm,circular_consensus,Pos: Obj-Reg,42,0.40476190476190477
+confirm,circular_consensus,Pos: Reg-Reg,40,0.175
+confirm,circular_consensus,Attr: Measure,32,0.40625
+confirm,circular_consensus,Attr: Appearance,33,0.21212121212121213
+confirm,circular_consensus,Motion: Cam,37,0.1891891891891892
+confirm,circular_consensus,Motion: Obj,38,0.3684210526315789
+confirm,circular_consensus,Multi-step,99,0.24242424242424243

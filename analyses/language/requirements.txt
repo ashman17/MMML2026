@@ -1,0 +1,13 @@
+# CPU environment for the language-only analysis.
+# Python 3.10. After install: python -m spacy download en_core_web_sm
+#
+# The blind-model step is separate: pip install -r requirements-blind-vlm.txt
+
+sentence-transformers
+scikit-learn
+scipy
+spacy
+seaborn
+pyarrow
+empath
+pytest

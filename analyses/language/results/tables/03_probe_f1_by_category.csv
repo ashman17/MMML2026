@@ -1,0 +1,12 @@
+,TF-IDF,MiniLM,Lexicon tags,Empath
+Pos: Cam-Cam,0.93,0.952,0.898,0.84
+Pos: Cam-Obj,0.777,0.733,0.457,0.46
+Pos: Cam-Reg,0.795,0.902,0.478,0.454
+Pos: Obj-Obj,0.674,0.645,0.491,0.266
+Pos: Obj-Reg,0.731,0.578,0.466,0.338
+Pos: Reg-Reg,0.761,0.638,0.455,0.437
+Attr: Measure,0.891,0.898,0.847,0.464
+Attr: Appearance,0.961,0.937,0.839,0.648
+Motion: Cam,0.933,0.914,0.935,0.657
+Motion: Obj,0.878,0.838,0.821,0.626
+Multi-step,0.732,0.667,0.551,0.409

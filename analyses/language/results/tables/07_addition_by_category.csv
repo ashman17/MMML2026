@@ -1,0 +1,12 @@
+category_en,add_spatial,add_viewpoint,add_comparison,add_reasoning,n,bridging_landmark_share,dominant,purity
+Pos: Cam-Cam,0.301,0.14,0.151,0.086,93,0.735,spatial,0.301
+Pos: Cam-Obj,0.314,0.372,0.198,0.256,86,0.742,viewpoint,0.372
+Pos: Cam-Reg,0.325,0.229,0.096,0.024,83,0.784,spatial,0.325
+Pos: Obj-Obj,0.255,0.149,0.117,0.223,94,0.618,spatial,0.255
+Pos: Obj-Reg,0.247,0.035,0.129,0.353,85,0.294,reasoning,0.353
+Pos: Reg-Reg,0.16,0.185,0.296,0.235,81,0.533,comparison,0.296
+Attr: Measure,0.109,0.0,0.328,0.062,64,0.5,comparison,0.328
+Attr: Appearance,0.045,0.03,0.0,0.061,66,0.333,reasoning,0.061
+Motion: Cam,0.122,0.081,0.338,0.041,74,1.0,comparison,0.338
+Motion: Obj,0.132,0.066,0.105,0.053,76,0.538,spatial,0.132
+Multi-step,0.308,0.152,0.157,0.131,198,0.532,spatial,0.308

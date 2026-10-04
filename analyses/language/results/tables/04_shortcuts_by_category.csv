@@ -1,0 +1,78 @@
+policy,category_en,n,accuracy
+majority_letter,Motion: Cam,37,0.24324324324324326
+majority_letter,Pos: Cam-Obj,43,0.3023255813953488
+majority_letter,Attr: Measure,32,0.34375
+majority_letter,Pos: Reg-Reg,40,0.2
+majority_letter,Multi-step,99,0.20202020202020202
+majority_letter,Pos: Cam-Cam,47,0.2765957446808511
+majority_letter,Attr: Appearance,33,0.30303030303030304
+majority_letter,Pos: Obj-Reg,42,0.23809523809523808
+majority_letter,Pos: Obj-Obj,47,0.2127659574468085
+majority_letter,Motion: Obj,38,0.2631578947368421
+majority_letter,Pos: Cam-Reg,42,0.16666666666666666
+longest_option,Motion: Cam,37,0.3108108108108108
+longest_option,Pos: Cam-Obj,43,0.27906976744186046
+longest_option,Attr: Measure,32,0.08333333333333333
+longest_option,Pos: Reg-Reg,40,0.2125
+longest_option,Multi-step,99,0.26262626262626265
+longest_option,Pos: Cam-Cam,47,0.3528368794326241
+longest_option,Attr: Appearance,33,0.3106060606060606
+longest_option,Pos: Obj-Reg,42,0.2976190476190476
+longest_option,Pos: Obj-Obj,47,0.2783687943262411
+longest_option,Motion: Obj,38,0.25
+longest_option,Pos: Cam-Reg,42,0.3333333333333333
+shortest_option,Motion: Cam,37,0.19369369369369369
+shortest_option,Pos: Cam-Obj,43,0.22868217054263562
+shortest_option,Attr: Measure,32,0.22395833333333331
+shortest_option,Pos: Reg-Reg,40,0.2583333333333333
+shortest_option,Multi-step,99,0.22895622895622894
+shortest_option,Pos: Cam-Cam,47,0.21453900709219856
+shortest_option,Attr: Appearance,33,0.2196969696969697
+shortest_option,Pos: Obj-Reg,42,0.20238095238095238
+shortest_option,Pos: Obj-Obj,47,0.23581560283687944
+shortest_option,Motion: Obj,38,0.2807017543859649
+shortest_option,Pos: Cam-Reg,42,0.19444444444444442
+greatest_overlap,Motion: Cam,37,0.2905405405405405
+greatest_overlap,Pos: Cam-Obj,43,0.18023255813953487
+greatest_overlap,Attr: Measure,32,0.0859375
+greatest_overlap,Pos: Reg-Reg,40,0.1875
+greatest_overlap,Multi-step,99,0.21212121212121213
+greatest_overlap,Pos: Cam-Cam,47,0.3120567375886525
+greatest_overlap,Attr: Appearance,33,0.2196969696969697
+greatest_overlap,Pos: Obj-Reg,42,0.19047619047619047
+greatest_overlap,Pos: Obj-Obj,47,0.2393617021276596
+greatest_overlap,Motion: Obj,38,0.25
+greatest_overlap,Pos: Cam-Reg,42,0.2619047619047619
+option_content_prior,Motion: Cam,37,0.4864864864864865
+option_content_prior,Pos: Cam-Obj,43,0.3953488372093023
+option_content_prior,Attr: Measure,32,0.453125
+option_content_prior,Pos: Reg-Reg,40,0.325
+option_content_prior,Multi-step,99,0.21380471380471378
+option_content_prior,Pos: Cam-Cam,47,0.3191489361702128
+option_content_prior,Attr: Appearance,33,0.2525252525252525
+option_content_prior,Pos: Obj-Reg,42,0.2619047619047619
+option_content_prior,Pos: Obj-Obj,47,0.3191489361702128
+option_content_prior,Motion: Obj,38,0.2894736842105263
+option_content_prior,Pos: Cam-Reg,42,0.40476190476190477
+random_after_elimination,Motion: Cam,37,0.25
+random_after_elimination,Pos: Cam-Obj,43,0.25
+random_after_elimination,Attr: Measure,32,0.3125
+random_after_elimination,Pos: Reg-Reg,40,0.25
+random_after_elimination,Multi-step,99,0.25
+random_after_elimination,Pos: Cam-Cam,47,0.25
+random_after_elimination,Attr: Appearance,33,0.25
+random_after_elimination,Pos: Obj-Reg,42,0.25
+random_after_elimination,Pos: Obj-Obj,47,0.25354609929078015
+random_after_elimination,Motion: Obj,38,0.25219298245614036
+random_after_elimination,Pos: Cam-Reg,42,0.25
+text_learner,Motion: Cam,37,0.40540540540540543
+text_learner,Pos: Cam-Obj,43,0.37209302325581395
+text_learner,Attr: Measure,32,0.34375
+text_learner,Pos: Reg-Reg,40,0.2
+text_learner,Multi-step,99,0.30303030303030304
+text_learner,Pos: Cam-Cam,47,0.3617021276595745
+text_learner,Attr: Appearance,33,0.45454545454545453
+text_learner,Pos: Obj-Reg,42,0.42857142857142855
+text_learner,Pos: Obj-Obj,47,0.3404255319148936
+text_learner,Motion: Obj,38,0.21052631578947367
+text_learner,Pos: Cam-Reg,42,0.23809523809523808

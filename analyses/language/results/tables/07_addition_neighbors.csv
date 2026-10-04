@@ -1,0 +1,9 @@
+flag,split,same_category_agreement,cross_category_agreement,cross_null_mean,cross_null_p95,cross_p_value,n_same,n_cross
+spatial,explore,0.7198,0.65,0.6456,0.6789,0.4346,1463,1037
+viewpoint,explore,0.8216,0.7512,0.7601,0.7917,0.6693,1463,1037
+comparison,explore,0.7409,0.7146,0.7161,0.7512,0.5504,1463,1037
+reasoning,explore,0.8599,0.7252,0.7548,0.7869,0.9331,1463,1037
+spatial,confirm,0.7093,0.655,0.6462,0.6768,0.3457,1445,1055
+viewpoint,confirm,0.8104,0.7261,0.7615,0.7886,0.979,1445,1055
+comparison,confirm,0.7384,0.7156,0.7176,0.7469,0.5584,1445,1055
+reasoning,confirm,0.8747,0.7355,0.7548,0.7848,0.8581,1445,1055

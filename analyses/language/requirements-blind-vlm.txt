@@ -1,0 +1,6 @@
+# Install in a CUDA-enabled Colab or cluster environment.
+# PyTorch is normally preinstalled by Colab or supplied by the cluster.
+transformers
+accelerate
+bitsandbytes
+qwen-vl-utils

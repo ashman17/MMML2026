@@ -1,0 +1,669 @@
+{
+  "format": "mmml-review-v1",
+  "reviewer": "R3",
+  "sample_sha256": "50f9b9e764d736a1e3e0d78d762937eee2fe3ca2bdbb918d76fd23416d033eda",
+  "answers": [
+    {
+      "reviewer": "R3",
+      "item_id": "1",
+      "answer": "B",
+      "confidence": 3,
+      "seconds": 36.034,
+      "evidence_images": "1,2",
+      "explanation": "The grabber moved to the left so left.",
+      "created_at": 1791137887.712287
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "112",
+      "answer": "D",
+      "confidence": 3,
+      "seconds": 51.933,
+      "evidence_images": "1,2",
+      "explanation": "The camera is moved to capture the back side of the pigeons.",
+      "created_at": 1791136970.199745
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "156",
+      "answer": "B",
+      "confidence": 3,
+      "seconds": 35.798,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791139591.871573
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "157",
+      "answer": "C",
+      "confidence": 3,
+      "seconds": 53.854,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791139556.05597
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "20",
+      "answer": "A",
+      "confidence": 4,
+      "seconds": 82.811,
+      "evidence_images": "1,2",
+      "explanation": "There is a spec on the top of the head that can be used to identify the duplicate strips between the 2 images.",
+      "created_at": 1791136912.30048
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "207",
+      "answer": "B",
+      "confidence": 4,
+      "seconds": 121.769,
+      "evidence_images": "1,2",
+      "explanation": "The gray house in figure 1 is as tall as the yellow house. The yellow house is smaller than the red house which is as tall as the gray house in figure 2.",
+      "created_at": 1791137260.1832151
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "212",
+      "answer": "B",
+      "confidence": 3,
+      "seconds": 48.046,
+      "evidence_images": "1,2",
+      "explanation": "More content visible on top so moving up.",
+      "created_at": 1791137851.663467
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "270",
+      "answer": "A",
+      "confidence": 3,
+      "seconds": 120.033,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791139711.9195268
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "285",
+      "answer": "A",
+      "confidence": 3,
+      "seconds": 89.665,
+      "evidence_images": "1,2",
+      "explanation": "In first image the blue car seems to be going to the right but is now coming towards us. So it too a right turn.",
+      "created_at": 1791138043.0436459
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "382",
+      "answer": "D",
+      "confidence": 3,
+      "seconds": 92.34,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791139339.693014
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "389",
+      "answer": "C",
+      "confidence": 4,
+      "seconds": 168.184,
+      "evidence_images": "1,2",
+      "explanation": "The humidifier-like object (white one to the right of the tissue box) is common in both images. The humidifier-like object is a little taller than the tissue box but the cup is much smaller than it. ",
+      "created_at": 1791137138.39951
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "41",
+      "answer": "D",
+      "confidence": 4,
+      "seconds": 86.708,
+      "evidence_images": "1,2",
+      "explanation": "The painting wall is to the front left in image 1 and in front in image 2. The table with teapot is to the right of image 2's perspective.",
+      "created_at": 1791138785.783263
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "423",
+      "answer": "A",
+      "confidence": 3,
+      "seconds": 56.967,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791139438.924639
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "50",
+      "answer": "C",
+      "confidence": 5,
+      "seconds": 12.582,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791138747.866753
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "546",
+      "answer": "B",
+      "confidence": 3,
+      "seconds": 41.316,
+      "evidence_images": "1,2",
+      "explanation": "More of the blue boat is now visible which is towards the right, so the boat moved right",
+      "created_at": 1791137929.042619
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "559",
+      "answer": "A",
+      "confidence": 3,
+      "seconds": 110.013,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791138153.076301
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "579",
+      "answer": "B",
+      "confidence": 4,
+      "seconds": 42.232,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791139381.94193
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "593",
+      "answer": "D",
+      "confidence": 3,
+      "seconds": 114.935,
+      "evidence_images": "1,2",
+      "explanation": "The vase is in the first image to the far back in the mirror. So, that means the vase is behind the cameraman in image 1. If the comeraman in second image is look to that corner, the bathroom (aka mirror) should be behind and to the left.",
+      "created_at": 1791139247.3255522
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "615",
+      "answer": "D",
+      "confidence": 4,
+      "seconds": 141.103,
+      "evidence_images": "1,2",
+      "explanation": "From the ottoman is to the right in image 2 and in front in image 1. The camera has rotated to the left. So book moves from front to front right.",
+      "created_at": 1791138976.535316
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "62",
+      "answer": "D",
+      "confidence": 3,
+      "seconds": 43.152,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791139802.985097
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "621",
+      "answer": "D",
+      "confidence": 4,
+      "seconds": 63.232,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791139502.170269
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "633",
+      "answer": "D",
+      "confidence": 4,
+      "seconds": 79.741,
+      "evidence_images": "1,2",
+      "explanation": "The green cone can be used to identify that second image shows the west view of the building.",
+      "created_at": 1791136817.536405
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "636",
+      "answer": "B",
+      "confidence": 3,
+      "seconds": 190.152,
+      "evidence_images": "1,2,3,4",
+      "explanation": "",
+      "created_at": 1791137803.6030238
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "716",
+      "answer": "C",
+      "confidence": 3,
+      "seconds": 149.716,
+      "evidence_images": "1,2",
+      "explanation": "There is no direct way to measure. On appearance both look similar because they are expected to seat on person each.",
+      "created_at": 1791137409.916686
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "735",
+      "answer": "C",
+      "confidence": 3,
+      "seconds": 47.885,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791139759.819398
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "767",
+      "answer": "A",
+      "confidence": 2,
+      "seconds": 137.811,
+      "evidence_images": "1,2,3,4,5,6,7",
+      "explanation": "Trash can is appearing in image 5. It appears the person is moving clockwise in every picture.",
+      "created_at": 1791137547.746856
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "794",
+      "answer": "C",
+      "confidence": 3,
+      "seconds": 45.012,
+      "evidence_images": "1,2",
+      "explanation": "Could be behind or to the left.",
+      "created_at": 1791139021.563851
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "819",
+      "answer": "A",
+      "confidence": 2,
+      "seconds": 65.67,
+      "evidence_images": "1,2,3,4,5,6",
+      "explanation": "No door and options don't have gray printer.",
+      "created_at": 1791137613.4320178
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "87",
+      "answer": "B",
+      "confidence": 4,
+      "seconds": 38.047,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791138735.265543
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "929",
+      "answer": "C",
+      "confidence": 3,
+      "seconds": 27.251,
+      "evidence_images": "1,2",
+      "explanation": "Turning towards the light.",
+      "created_at": 1791138180.344657
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "930",
+      "answer": "C",
+      "confidence": 4,
+      "seconds": 101.757,
+      "evidence_images": "1,2",
+      "explanation": "The storage closet is common to both images. It moves from left to right. So camera rotated to the left. What is in front in image 1 is to the front and right in image 2. That should be living room or dining room looking area.",
+      "created_at": 1791139119.478674
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "98",
+      "answer": "C",
+      "confidence": 1,
+      "seconds": 516.841,
+      "evidence_images": "1,2",
+      "explanation": "",
+      "created_at": 1791138697.2024891
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "992",
+      "answer": "B",
+      "confidence": 4,
+      "seconds": 24.311,
+      "evidence_images": "1,2",
+      "explanation": "Object is picked upwards.",
+      "created_at": 1791137953.36395
+    }
+  ],
+  "traces": [
+    {
+      "reviewer": "R3",
+      "item_id": "1",
+      "first_bad_claim": "The tray contents shift downward relative to the fixed grippers between images",
+      "claim_status": "incorrect",
+      "failure_type": "reference_frame_or_motion",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141322.352015
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "112",
+      "first_bad_claim": "Figure 2 shows the opposite, rear-facing view compared with the north-side view in Figure 1",
+      "claim_status": "incorrect",
+      "failure_type": "reference_frame_or_motion",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791139954.7175481
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "156",
+      "first_bad_claim": "The painting is on the opposite side of the study",
+      "claim_status": "incorrect",
+      "failure_type": "spatial_logic",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141691.479483
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "157",
+      "first_bad_claim": "",
+      "claim_status": "unsupported",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141664.366406
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "20",
+      "first_bad_claim": "Directly claiming six without correlating images.",
+      "claim_status": "incorrect",
+      "failure_type": "cross_view",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791139913.855239
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "207",
+      "first_bad_claim": "The gray house in Figure 2 has taller first four floors",
+      "claim_status": "correct",
+      "failure_type": "spatial_logic",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791140058.452132
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "212",
+      "first_bad_claim": "The tabletop objects and tray shift slightly upward in the second view",
+      "claim_status": "incorrect",
+      "failure_type": "spatial_logic",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141302.7542589
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "270",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141700.030176
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "285",
+      "first_bad_claim": "The blue car moves forward from the distant center-right area into the oncoming lane in Figure 2",
+      "claim_status": "incorrect",
+      "failure_type": "cross_view",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141379.8033438
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "382",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141563.30306
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "389",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791139965.684333
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "41",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141479.050574
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "423",
+      "first_bad_claim": "The green bottle is on a shelf higher in the image",
+      "claim_status": "incorrect",
+      "failure_type": "spatial_logic",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141599.381993
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "50",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141473.302814
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "546",
+      "first_bad_claim": "The shoreline/horizon rises toward the right, indicating the boat is rolled to the right.",
+      "claim_status": "incorrect",
+      "failure_type": "grounding",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141343.951753
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "559",
+      "first_bad_claim": " to the left side in Image 2",
+      "claim_status": "incorrect",
+      "failure_type": "cross_view",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141400.937908
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "579",
+      "first_bad_claim": "The cabinet is on the opposite side of the room from the wall-mounted rack.",
+      "claim_status": "incorrect",
+      "failure_type": "cross_view",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141577.504944
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "593",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141552.987406
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "615",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141484.768682
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "62",
+      "first_bad_claim": "The refrigerator/food storage area is on the left side of that forward direction",
+      "claim_status": "incorrect",
+      "failure_type": "reference_frame_or_motion",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141730.984551
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "621",
+      "first_bad_claim": "The oven is in the kitchen area .... to the left,",
+      "claim_status": "incorrect",
+      "failure_type": "spatial_logic",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141635.050122
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "633",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791139869.536139
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "636",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2,3,4",
+      "notes": "",
+      "created_at": 1791141273.052489
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "716",
+      "first_bad_claim": "The bed with a backrest appears wider than the sofa\u2019s seat cushion.r",
+      "claim_status": "incorrect",
+      "failure_type": "spatial_logic",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791140151.3486888
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "735",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141704.88286
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "767",
+      "first_bad_claim": "",
+      "claim_status": "incorrect",
+      "failure_type": "reference_frame_or_motion",
+      "evidence_images": "1,2,3,4,5,6,7",
+      "notes": "",
+      "created_at": 1791140271.174262
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "794",
+      "first_bad_claim": "which is visible on the right side of photo 1 near the door",
+      "claim_status": "incorrect",
+      "failure_type": "grounding",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141504.103245
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "819",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2,3,4,5,6",
+      "notes": "",
+      "created_at": 1791141265.5086458
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "87",
+      "first_bad_claim": "The second photo is taken from the right and somewhat behind the first position",
+      "claim_status": "incorrect",
+      "failure_type": "spatial_logic",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141461.171106
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "929",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141425.0692859
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "930",
+      "first_bad_claim": "the open doorway on the front-right leads into a small bathroom-like room",
+      "claim_status": "incorrect",
+      "failure_type": "other",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141530.583669
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "98",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141432.268673
+    },
+    {
+      "reviewer": "R3",
+      "item_id": "992",
+      "first_bad_claim": "",
+      "claim_status": "correct",
+      "failure_type": "none",
+      "evidence_images": "1,2",
+      "notes": "",
+      "created_at": 1791141348.3203578
+    }
+  ]
+}

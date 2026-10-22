@@ -41,9 +41,11 @@ hf_hub_download(repo_id="RunsenXu/MMSI-Bench", filename="MMSI_Bench.parquet",
 PY
 fi
 
-# 2) run: defaults to the N=100 pilot; set N=300 for the main experiment
+# 2) run: defaults to the N=100 pilot; set N=300 for the main experiment.
+#    EXCLUDE="dev1/predictions.jsonl dev2/..." samples a held-out test split.
 python mmsi_consistency.py \
     --parquet $WORK/MMSI_Bench.parquet \
     --n ${N:-100} \
+    ${EXCLUDE:+--exclude $EXCLUDE} \
     --model ${MODEL:-Qwen/Qwen2.5-VL-7B-Instruct} \
     --out "$OUT"

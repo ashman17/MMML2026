@@ -266,7 +266,13 @@ class OpenAIBackend:
 
 # ---------------------------------------------------------------- run
 def run(args):
-    rows = stratified_sample(load_rows(args.parquet), args.n, args.seed)
+    rows = load_rows(args.parquet)
+    if args.exclude:
+        # held-out split: drop every question already used in an earlier (dev) run
+        seen = {json.loads(l)["id"] for p in args.exclude for l in open(p)}
+        rows = [r for r in rows if int(r["id"]) not in seen]
+        print(f"excluded {len(seen)} dev questions, {len(rows)} remain", file=sys.stderr)
+    rows = stratified_sample(rows, args.n, args.seed)
     rng = random.Random(args.seed)
     os.makedirs(args.out, exist_ok=True)
     with open(os.path.join(args.out, "run_config.json"), "w") as f:
@@ -761,6 +767,8 @@ if __name__ == "__main__":
     ap.add_argument("--analyze", help="only analyze an existing predictions.jsonl")
     ap.add_argument("--n", type=int, default=100)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--exclude", nargs="+", default=[],
+                    help="predictions.jsonl files whose question ids are left out (held-out test split)")
     ap.add_argument("--backend", choices=["vllm", "openai", "mock"], default="vllm")
     ap.add_argument("--base_url", default="https://ai-gateway.andrew.cmu.edu",
                     help="OpenAI-compatible endpoint for --backend openai (CMU LiteLLM gateway)")

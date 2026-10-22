@@ -29,6 +29,9 @@ cd ~/idea3_consistency
 sbatch run_babel.sbatch                      # N=100 pilot, Qwen2.5-VL-7B
 N=300 sbatch run_babel.sbatch                # N=300 main run
 MODEL=Qwen/Qwen2.5-VL-3B-Instruct sbatch run_babel.sbatch
+# held-out test split: every question not used in the pilot / N=300 dev runs
+N=1000 EXCLUDE="$HOME/idea3_results/results_10646274/predictions.jsonl $HOME/idea3_results/results_10648545/predictions.jsonl" \
+    sbatch run_babel.sbatch
 ```
 Expect roughly 15 to 30 minutes for 100 questions on one GPU, including model loading.
 

@@ -1,0 +1,4 @@
+transform,n,flips,correct_to_wrong,wrong_to_correct,wrong_to_other_wrong
+mirror,225,73,16,23,34
+reorder,300,105,26,40,39
+shuffle,300,119,31,42,46

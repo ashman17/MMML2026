@@ -73,5 +73,25 @@ class FailureAnalysisTests(unittest.TestCase):
         self.assertIsNone(fa.shuffle_anchoring(r))  # original answer did not move
 
 
+IP_SPEC = importlib.util.spec_from_file_location(
+    "image_probes", MODULE_PATH.with_name("image_probes.py"))
+ip = importlib.util.module_from_spec(IP_SPEC)
+IP_SPEC.loader.exec_module(ip)
+
+
+class ImageProbeTests(unittest.TestCase):
+    def test_split_crops_overlap(self):
+        import io
+        from PIL import Image
+        buf = io.BytesIO(); Image.new("RGB", (100, 40)).save(buf, "JPEG")
+        left, right = (Image.open(io.BytesIO(b)) for b in ip.split_image(buf.getvalue()))
+        self.assertEqual((left.width, right.width, left.height), (60, 60, 40))  # 20% shared
+
+    def test_split_skips_counting_and_camera_motion(self):
+        self.assertFalse(ip.splittable(dict(question="How many chairs?", question_type="MSR")))
+        self.assertFalse(ip.splittable(dict(question="Where?", question_type="Motion (Cam.)")))
+        self.assertTrue(ip.splittable(dict(question="Where?", question_type="MSR")))
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,22 @@
+{
+  "parquet": "/data/user_data/vickytsa/idea3/MMSI_Bench.parquet",
+  "n": 1000,
+  "seed": 0,
+  "exclude": [
+    "/home/vickytsa/idea3_results/results_10646274/predictions.jsonl",
+    "/home/vickytsa/idea3_results/results_10648545/predictions.jsonl"
+  ],
+  "backend": "vllm",
+  "base_url": "https://ai-gateway.andrew.cmu.edu",
+  "workers": 8,
+  "max_tokens": 64,
+  "model": "OpenGVLab/InternVL3-8B",
+  "tp": 1,
+  "hf_overrides": "{\"max_dynamic_patch\": 6}",
+  "max_side": 768,
+  "sc_temp": 0.7,
+  "bootstrap": 1000,
+  "analysis_seed": 0,
+  "no_figures": false,
+  "out": "/data/user_data/vickytsa/idea3/results_10893224"
+}

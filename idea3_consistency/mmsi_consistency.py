@@ -175,11 +175,12 @@ class MockBackend:
         return outs
 
 class VLLMBackend:
-    def __init__(self, model, max_imgs=10, max_len=32768, tp=1):
+    def __init__(self, model, max_imgs=10, max_len=32768, tp=1, hf_overrides=None):
         from vllm import LLM
         self.llm = LLM(model=model, limit_mm_per_prompt={"image": max_imgs},
                        max_model_len=max_len, tensor_parallel_size=tp,
-                       gpu_memory_utilization=0.9, trust_remote_code=True)
+                       gpu_memory_utilization=0.9, trust_remote_code=True,
+                       hf_overrides=hf_overrides)
     def generate(self, convs, n=1, temperature=0.0):
         from vllm import SamplingParams
         sp = SamplingParams(n=n, temperature=temperature, top_p=1.0 if temperature == 0 else 0.95,
@@ -283,7 +284,8 @@ def run(args):
         backend = OpenAIBackend(args.model, args.base_url, os.path.join(args.out, "api_cache.jsonl"),
                                 workers=args.workers, max_tokens=args.max_tokens)
     else:
-        backend = VLLMBackend(args.model, tp=args.tp)
+        backend = VLLMBackend(args.model, tp=args.tp,
+                              hf_overrides=json.loads(args.hf_overrides) if args.hf_overrides else None)
 
     jobs = []  # (row_idx, variant)
     for i, r in enumerate(rows):
@@ -777,6 +779,8 @@ if __name__ == "__main__":
                     help="openai backend; raise (e.g. 2048) for reasoning models that think before answering")
     ap.add_argument("--model", default="Qwen/Qwen2.5-VL-7B-Instruct")
     ap.add_argument("--tp", type=int, default=1)
+    ap.add_argument("--hf_overrides", help='model config overrides as JSON, e.g. \'{"max_dynamic_patch": 6}\' '
+                    "for InternVL so many-image prompts fit the context")
     ap.add_argument("--max_side", type=int, default=768, help="resize long image side (0 = keep)")
     ap.add_argument("--sc_temp", type=float, default=0.7)
     ap.add_argument("--bootstrap", type=int, default=1000,

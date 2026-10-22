@@ -1,0 +1,34 @@
+question_type,transform,n,flip_rate
+Attribute (Appr.),mirror,24,25.0
+Attribute (Appr.),reorder,38,34.21052631578947
+Attribute (Appr.),shuffle,38,42.10526315789474
+Attribute (Meas.),mirror,36,2.7777777777777777
+Attribute (Meas.),reorder,36,19.444444444444443
+Attribute (Meas.),shuffle,36,25.0
+MSR,mirror,119,37.81512605042017
+MSR,reorder,170,34.11764705882353
+MSR,shuffle,170,40.588235294117645
+Motion (Cam.),mirror,47,34.04255319148936
+Motion (Cam.),reorder,47,12.76595744680851
+Motion (Cam.),shuffle,47,44.680851063829785
+Motion (Obj.),mirror,48,27.083333333333332
+Motion (Obj.),reorder,49,22.448979591836736
+Motion (Obj.),shuffle,49,38.775510204081634
+Positional Relationship (Cam.–Cam.),mirror,58,46.55172413793103
+Positional Relationship (Cam.–Cam.),reorder,66,33.333333333333336
+Positional Relationship (Cam.–Cam.),shuffle,66,42.42424242424242
+Positional Relationship (Cam.–Obj.),mirror,59,35.59322033898305
+Positional Relationship (Cam.–Obj.),reorder,59,40.67796610169491
+Positional Relationship (Cam.–Obj.),shuffle,59,32.20338983050848
+Positional Relationship (Cam.–Reg.),mirror,53,39.62264150943396
+Positional Relationship (Cam.–Reg.),reorder,56,30.357142857142858
+Positional Relationship (Cam.–Reg.),shuffle,56,33.92857142857143
+Positional Relationship (Obj.–Obj.),mirror,36,36.111111111111114
+Positional Relationship (Obj.–Obj.),reorder,67,38.80597014925373
+Positional Relationship (Obj.–Obj.),shuffle,67,43.28358208955224
+Positional Relationship (Obj.–Reg.),mirror,29,41.37931034482759
+Positional Relationship (Obj.–Reg.),reorder,58,15.517241379310345
+Positional Relationship (Obj.–Reg.),shuffle,58,34.48275862068966
+Positional Relationship (Reg.–Reg.),mirror,25,44.0
+Positional Relationship (Reg.–Reg.),reorder,54,35.18518518518518
+Positional Relationship (Reg.–Reg.),shuffle,54,40.74074074074074

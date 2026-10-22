@@ -1,0 +1,41 @@
+{
+  "n": 700,
+  "original_accuracy": 29.428571428571427,
+  "original_accuracy_ci": [
+    26.0,
+    32.714285714285715
+  ],
+  "consistency_rate": 41.0,
+  "accuracy_consistent": 33.79790940766551,
+  "accuracy_inconsistent": 26.39225181598063,
+  "disagreement_auroc": 0.5564050155261192,
+  "disagreement_auroc_ci": [
+    0.5099454903515996,
+    0.5989161465863845
+  ],
+  "self_consistency_accuracy": 28.714285714285715,
+  "transformation_vote_accuracy": 30.142857142857142,
+  "vote_gap_pp": 1.428571428571427,
+  "vote_gap_ci": [
+    -1.0,
+    3.8571428571428577
+  ],
+  "hypotheses": {
+    "H1": "supported",
+    "H2": "not_supported",
+    "H3": "directional_inconclusive",
+    "H4": "descriptive_support",
+    "H5": "descriptive_support"
+  },
+  "mcnemar": {
+    "transform_only_correct": 43,
+    "self_consistency_only_correct": 33,
+    "p_exact": 0.3018724904870077
+  },
+  "human_validity": null,
+  "figures": [
+    "fig_flip_rate_by_transform.png",
+    "fig_accuracy_vs_agreement.png",
+    "fig_vote_by_question_type.png"
+  ]
+}

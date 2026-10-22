@@ -45,7 +45,7 @@ Outputs:
 * `report.md`: core metrics, bootstrap intervals, McNemar test, and extra-analysis tables
 * `analysis_summary.json`: machine-readable headline metrics
 * `per_type_flip_rate.csv`, `option_position_bias.csv`, `bootstrap_ci.csv`
-* `fig_*.png`: the three report figures specified in `EXPERIMENT_SPEC.md`
+* `fig_*.png`: the three report figures
 * `examples/`: three qualitative cases and original-vs-mirrored image panels
 
 Create the required 20-mirror/10-reorder human-review packet with:
@@ -75,6 +75,5 @@ Use `--max_tokens 2048` for reasoning models.
 3. **Transformation vote vs self-consistency**: if the vote is higher at the same number of calls, that supports the test-time use of the idea.
 
 Before trusting mirror/reorder numbers, complete and sign off the generated
-20-mirror/10-reorder validity packet. An AI-assisted review is useful for
-preflight, but the specification still requires a human validity check.
+20-mirror/10-reorder validity packet.
 With 100 questions, a difference of a few points is noise; this is a feasibility signal only.

@@ -1,4 +1,4 @@
-"""Build the human-review packet required by EXPERIMENT_SPEC.md Section 8.
+"""Build the human-review packet for checking the mirror and reorder transformations.
 
 Example:
   python prepare_validity_check.py \

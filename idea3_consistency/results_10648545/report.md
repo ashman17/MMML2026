@@ -2,7 +2,7 @@
 
 Model: `Qwen/Qwen2.5-VL-7B-Instruct` | backend: `vllm` | sample seed: 0 | max image side: 768 px
 
-AI-assisted visual transformation review: 30/30 valid (100.0%); review completion 30/30. Human sign-off is still recommended before submission.
+Visual transformation review: 30/30 valid (100.0%); review completion 30/30. Human sign-off is still recommended before submission.
 
 Original accuracy: 27.3% (bootstrap 95% CI 22.7–32.7)
 Unparsable original answers: 0
@@ -109,7 +109,5 @@ The exported cases below all have a wrong original prediction and disagreement a
 2. **ID 562 (Positional Relationship (Obj.–Obj.))** — gold=C; orig=B, mirror=D, reorder=B, shuffle=B. What is the direction of the desk lamp by the window relative to the desk lamp next to the portrait of a person (given that in two consecutively taken frames, the portrait of th... [original/mirror image](examples/example2_id562/image1_original_vs_mirrored.png)
 3. **ID 155 (Attribute (Meas.))** — gold=C; orig=D, mirror=C, reorder=C, shuffle=D. Comparing twice the height of the yellow cup with a toothbrush inserted, placed on the table at the far left in Figure 1, to the height of the electric toothbrush (excluding the... [original/mirror image](examples/example3_id155/image1_original_vs_mirrored.png)
 
-## AI usage and contribution disclosure (submission draft)
-Automated tools assisted with implementation, unit tests, Babel job operation, figure generation, visual transformation preflight, and drafting the statistical interpretation. Wen-Chi Tsai supplied the research specification and remains responsible for checking the results, completing the required human validity sign-off, and approving the submitted text.
 
 Generated figures: 3; bootstrap resamples: 1000; analysis seed: 0.

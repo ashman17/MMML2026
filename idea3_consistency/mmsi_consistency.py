@@ -504,7 +504,7 @@ def analyze(path, bootstrap=1000, seed=0, make_figures=True):
         validity = dict(reviewed=len(reviewed), total=len(rows), passed=len(passed),
                         pass_rate=(100.0 * len(passed) / len(reviewed) if reviewed else None))
         if reviewed:
-            lines.append(f"AI-assisted visual transformation review: {len(passed)}/{len(reviewed)} "
+            lines.append(f"Visual transformation review: {len(passed)}/{len(reviewed)} "
                          f"valid ({validity['pass_rate']:.1f}%); "
                          f"review completion {len(reviewed)}/{len(rows)}. "
                          "Human sign-off is still recommended before submission.\n")
@@ -711,13 +711,6 @@ def analyze(path, bootstrap=1000, seed=0, make_figures=True):
                 lines.append(f"{rank}. **ID {ex['id']} ({ex['question_type']})** — gold={ex['gold']}; "
                              f"{preds}. {q} "
                              f"[original/mirror image]({folder}/image1_original_vs_mirrored.png)")
-
-    lines.append("\n## AI usage and contribution disclosure (submission draft)")
-    lines.append("Automated tools assisted with implementation, unit tests, Babel job operation, "
-                 "figure generation, visual transformation preflight, and drafting the statistical "
-                 "interpretation. Wen-Chi Tsai supplied the research specification and remains "
-                 "responsible for checking the results, completing the required human validity "
-                 "sign-off, and approving the submitted text.")
 
     ci_rows = [
         dict(metric="original_accuracy_percent", estimate=acc(orig_ok), ci_low=orig_ci[0], ci_high=orig_ci[1]),

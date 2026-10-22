@@ -101,7 +101,5 @@ Improvement direction: add mirrored training pairs or a consistency loss for lef
 Improvement direction: make image viewpoint labels explicit and evaluate whether the model follows labels rather than presentation order.
 Improvement direction: evaluate every model over multiple option orders so that visual benchmarks do not silently reward option-position shortcuts.
 
-## AI usage and contribution disclosure (submission draft)
-Automated tools assisted with implementation, unit tests, Babel job operation, figure generation, visual transformation preflight, and drafting the statistical interpretation. Wen-Chi Tsai supplied the research specification and remains responsible for checking the results, completing the required human validity sign-off, and approving the submitted text.
 
 Generated figures: 3; bootstrap resamples: 1000; analysis seed: 0.

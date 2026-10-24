@@ -62,23 +62,24 @@ for i, (head, body) in enumerate(findings):
 
 # Panel 3: final plan
 panel(67, 32, "Final: improvements", GREEN)
-box(69, 30, 28, 11.5, "", GREEN)
-ax.text(83, 39.0, "A. Test-time (no training)", ha="center", fontsize=6.2, weight="bold")
-ax.text(83, 35.0, r"soft ensemble: $\Sigma_t\, \log p(c\,|\,t(x))$", ha="center", fontsize=5.4)
-ax.text(83, 31.6, r"contrastive: $\log p(c|x) - \alpha \log p(c|x_{\mathrm{noimg}})$",
+box(69, 27, 28, 14.5, "", GREEN)
+ax.text(83, 39.0, "A. Inference-time decoding (main)", ha="center", fontsize=5.5, weight="bold")
+ax.text(83, 35.6, "no training, same Qwen2.5-VL-7B", ha="center", fontsize=4.8, style="italic")
+ax.text(83, 32.2, r"TTA: $\Sigma_t\, \log p(\pi_t(c)\,|\,t(x))$", ha="center", fontsize=5.4)
+ax.text(83, 28.9, r"$-\ \alpha\, \Sigma_t \log p(\pi_t(c)\,|\,t(x)_{\varnothing})$  (no image)",
+        ha="center", fontsize=5.0)
+box(69, 10, 28, 14, "", GREEN, fill=False)
+ax.text(83, 21.6, "B. Extension: consistency fine-tuning", ha="center", fontsize=5.1, weight="bold")
+ax.text(83, 18.4, r"$\mathcal{L} = \mathrm{CE}$", ha="center", fontsize=5.4)
+ax.text(83, 15.3, r"$+\ \lambda_1 \Sigma_t\, \mathrm{KL}(p(\cdot|x)\,\|\,\pi_t\, p(\cdot|t(x)))$",
         ha="center", fontsize=5.4)
-box(69, 10, 28, 17, "", GREEN)
-ax.text(83, 24.0, "B. Consistency-regularized LoRA", ha="center", fontsize=5.6, weight="bold")
-ax.text(83, 20.2, r"$\mathcal{L} = \mathrm{CE}(f(x), y)$", ha="center", fontsize=5.6)
-ax.text(83, 16.8, r"$+\ \lambda_1 \Sigma_t\, \mathrm{KL}(p(\cdot|x)\,\|\,\pi_t\, p(\cdot|t(x)))$",
-        ha="center", fontsize=5.6)
-ax.text(83, 13.4, r"$+\ \lambda_2\, \mathrm{KL}(p(\cdot|x_{\mathrm{noimg}})\,\|\,\mathcal{U})$",
-        ha="center", fontsize=5.6)
+ax.text(83, 12.2, r"$+\ \lambda_2\, \mathrm{KL}(p(\cdot|x_{\varnothing})\,\|\,\mathcal{U})$",
+        ha="center", fontsize=5.4)
 
 arrow(32.6, 26, 34.4, 26, GREY)
 arrow(64.6, 26, 66.4, 26, GREY)
 ax.text(50, 2.6, "Evaluate baseline, A and B on the same held-out split: accuracy, flip rate, "
-        "lexical anchoring, confident errors", ha="center", va="center", fontsize=5.8,
+        "lexical anchoring, confident errors, no-image agreement", ha="center", va="center", fontsize=5.8,
         style="italic", color=GREY)
 
 out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fig_idea3_pipeline")

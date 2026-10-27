@@ -1,0 +1,14 @@
+Evidence extracted by a model from the images (may be incomplete or wrong):
+Query frame: unknown.
+Temporal order: unknown.
+Camera cam1 took image_1. Camera cam2 took image_2.
+[e1] e1 is an object labeled "glicerine bottle"; it is the same entity across views (uncertainty medium).
+[e2] e2 is an object labeled "blue tray"; it is the same entity across views (uncertainty medium).
+[e3] e3 is an object labeled "black robotic gripper"; it is the same entity across views (uncertainty medium).
+[o1] In image_1 (center), e1 is observed: "glicerine bottle held by a robotic gripper".
+[o2] In image_1 (top_left), e2 is observed: "blue tray in the background".
+[o3] In image_1 (bottom), e3 is observed: "black robotic gripper holding the bottle".
+[o4] In image_2 (center), e1 is observed: "glicerine bottle held by a robotic gripper".
+[o5] In image_2 (top_left), e2 is observed: "blue tray in the background".
+[o6] In image_2 (bottom), e3 is observed: "black robotic gripper holding the bottle".
+[u1] Unknown: camera rotation direction between the two images is not supported.

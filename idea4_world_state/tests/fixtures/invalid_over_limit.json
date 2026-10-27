@@ -1,0 +1,24 @@
+{
+  "schema_version": "ws-1",
+  "query_frame": {"frame": "unknown", "basis": null},
+  "temporal_order": {"status": "unknown", "order": null, "basis": null},
+  "cameras": [
+    {"id": "cam1", "image_id": "image_1"},
+    {"id": "cam2", "image_id": "image_2"}
+  ],
+  "entities": [
+    {"id": "e1", "type": "object", "label": "object 1", "cross_view": null},
+    {"id": "e2", "type": "object", "label": "object 2", "cross_view": null},
+    {"id": "e3", "type": "object", "label": "object 3", "cross_view": null},
+    {"id": "e4", "type": "object", "label": "object 4", "cross_view": null},
+    {"id": "e5", "type": "object", "label": "object 5", "cross_view": null},
+    {"id": "e6", "type": "object", "label": "object 6", "cross_view": null},
+    {"id": "e7", "type": "object", "label": "object 7", "cross_view": null},
+    {"id": "e8", "type": "object", "label": "object 8", "cross_view": null},
+    {"id": "e9", "type": "object", "label": "object 9", "cross_view": null}
+  ],
+  "observations": [],
+  "identity_links": [],
+  "claims": [],
+  "unknowns": ["nine entities exceed the limit of eight"]
+}

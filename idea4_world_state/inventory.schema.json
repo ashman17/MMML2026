@@ -1,0 +1,338 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ws-1 evidence inventory",
+  "description": "ws-1 evidence inventory. This schema enforces structural constraints: required fields, types, enums, ID patterns, maximum lengths and counts, the frame pattern, relation-versus-attribute object/value nullability, unknown-versus-supported temporal nullability, and a non-null image_id when frame matches image_plane. The WP2 semantic validator checks cross-reference resolution, camera-per-image count, cross_view required if and only if the entity is observed in two or more images, and note required when predicate is other. WP2 also checks ID uniqueness within each list (not expressible in draft 2020-12), that a supported temporal order is a permutation of the input image ids, that an image_plane frame names the same image as image_id, and that view-specific time-varying claims carry an image_id while across-view claims use null.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "query_frame",
+    "temporal_order",
+    "cameras",
+    "entities",
+    "observations",
+    "identity_links",
+    "claims",
+    "unknowns"
+  ],
+  "properties": {
+    "schema_version": {"const": "ws-1"},
+    "query_frame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["frame", "basis"],
+      "properties": {
+        "frame": {"$ref": "#/$defs/frame"},
+        "basis": {"type": ["string", "null"], "maxLength": 160}
+      }
+    },
+    "temporal_order": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "order", "basis"],
+      "properties": {
+        "status": {"$ref": "#/$defs/temporal_status"},
+        "order": {
+          "anyOf": [
+            {"type": "null"},
+            {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {"$ref": "#/$defs/image_id"}
+            }
+          ]
+        },
+        "basis": {"type": ["string", "null"], "maxLength": 160}
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {"status": {"const": "unknown"}},
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "order": {"type": "null"},
+              "basis": {"type": "null"}
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {"status": {"const": "supported"}},
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "order": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {"$ref": "#/$defs/image_id"}
+              },
+              "basis": {"type": "string", "maxLength": 160}
+            }
+          }
+        }
+      ]
+    },
+    "cameras": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "image_id"],
+        "properties": {
+          "id": {"$ref": "#/$defs/camera_id"},
+          "image_id": {"$ref": "#/$defs/image_id"}
+        }
+      }
+    },
+    "entities": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "type", "label", "cross_view"],
+        "properties": {
+          "id": {"$ref": "#/$defs/entity_id"},
+          "type": {"$ref": "#/$defs/entity_type"},
+          "label": {"type": "string", "maxLength": 60},
+          "cross_view": {
+            "anyOf": [
+              {"type": "null"},
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["status", "uncertainty"],
+                "properties": {
+                  "status": {"$ref": "#/$defs/cross_view_status"},
+                  "uncertainty": {"$ref": "#/$defs/uncertainty"}
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "observations": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "entity", "image_id", "where", "description"],
+        "properties": {
+          "id": {"$ref": "#/$defs/observation_id"},
+          "entity": {"$ref": "#/$defs/entity_or_camera_id"},
+          "image_id": {"$ref": "#/$defs/image_id"},
+          "where": {"$ref": "#/$defs/where"},
+          "description": {"type": "string", "maxLength": 120}
+        }
+      }
+    },
+    "identity_links": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "entities", "status", "uncertainty"],
+        "properties": {
+          "id": {"$ref": "#/$defs/identity_link_id"},
+          "entities": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "uniqueItems": true,
+            "items": {"$ref": "#/$defs/entity_id"}
+          },
+          "status": {"$ref": "#/$defs/identity_link_status"},
+          "uncertainty": {"$ref": "#/$defs/uncertainty"}
+        }
+      }
+    },
+    "claims": {
+      "type": "array",
+      "maxItems": 24,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind",
+          "subject",
+          "predicate",
+          "object",
+          "value",
+          "frame",
+          "image_id",
+          "support",
+          "uncertainty",
+          "note"
+        ],
+        "properties": {
+          "id": {"$ref": "#/$defs/claim_id"},
+          "kind": {"$ref": "#/$defs/claim_kind"},
+          "subject": {"$ref": "#/$defs/entity_or_camera_id"},
+          "predicate": {"type": "string"},
+          "object": {
+            "anyOf": [
+              {"type": "null"},
+              {"$ref": "#/$defs/entity_or_camera_id"}
+            ]
+          },
+          "value": {
+            "anyOf": [
+              {"type": "null"},
+              {"type": "string", "maxLength": 60}
+            ]
+          },
+          "frame": {"$ref": "#/$defs/frame"},
+          "image_id": {
+            "anyOf": [
+              {"type": "null"},
+              {"$ref": "#/$defs/image_id"}
+            ]
+          },
+          "support": {
+            "type": "array",
+            "minItems": 1,
+            "items": {"$ref": "#/$defs/observation_id"}
+          },
+          "uncertainty": {"$ref": "#/$defs/uncertainty"},
+          "note": {"type": ["string", "null"], "maxLength": 120}
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {"kind": {"const": "relation"}},
+              "required": ["kind"]
+            },
+            "then": {
+              "properties": {
+                "predicate": {"$ref": "#/$defs/relation_predicate"},
+                "object": {"$ref": "#/$defs/entity_or_camera_id"},
+                "value": {"type": "null"}
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {"kind": {"const": "attribute"}},
+              "required": ["kind"]
+            },
+            "then": {
+              "properties": {
+                "predicate": {"$ref": "#/$defs/attribute_predicate"},
+                "object": {"type": "null"},
+                "value": {"type": "string", "maxLength": 60}
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {"frame": {"pattern": "^image_plane:"}},
+              "required": ["frame"]
+            },
+            "then": {
+              "properties": {
+                "image_id": {"$ref": "#/$defs/image_id"}
+              },
+              "required": ["image_id"]
+            }
+          }
+        ]
+      }
+    },
+    "unknowns": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {"type": "string", "maxLength": 200}
+    }
+  },
+  "$defs": {
+    "entity_type": {"type": "string", "enum": ["object", "region"]},
+    "where": {
+      "type": "string",
+      "enum": [
+        "left",
+        "center",
+        "right",
+        "top",
+        "bottom",
+        "top_left",
+        "top_right",
+        "bottom_left",
+        "bottom_right",
+        "unknown"
+      ]
+    },
+    "relation_predicate": {
+      "type": "string",
+      "enum": [
+        "left_of",
+        "right_of",
+        "in_front_of",
+        "behind",
+        "above",
+        "below",
+        "on",
+        "inside",
+        "near",
+        "far_from",
+        "adjacent_to",
+        "facing",
+        "camera_rotated_left",
+        "camera_rotated_right",
+        "camera_moved_forward",
+        "camera_moved_backward",
+        "camera_moved_left",
+        "camera_moved_right",
+        "camera_moved_up",
+        "camera_moved_down",
+        "moved_left",
+        "moved_right",
+        "moved_toward",
+        "moved_away_from",
+        "moved_up",
+        "moved_down",
+        "other"
+      ]
+    },
+    "attribute_predicate": {
+      "type": "string",
+      "enum": [
+        "color",
+        "shape",
+        "material",
+        "size",
+        "count",
+        "length",
+        "height",
+        "distance",
+        "text",
+        "state",
+        "other"
+      ]
+    },
+    "uncertainty": {"type": "string", "enum": ["low", "medium", "high"]},
+    "identity_link_status": {"type": "string", "enum": ["tentative", "different"]},
+    "cross_view_status": {"type": "string", "enum": ["same"]},
+    "temporal_status": {"type": "string", "enum": ["supported", "unknown"]},
+    "claim_kind": {"type": "string", "enum": ["relation", "attribute"]},
+    "frame": {
+      "type": "string",
+      "pattern": "^(?:image_plane:image_[1-9]\\d*|camera:cam[1-9]\\d*|entity:e[1-9]\\d*|unknown)$"
+    },
+    "camera_id": {"type": "string", "pattern": "^cam[1-9]\\d*$"},
+    "image_id": {"type": "string", "pattern": "^image_[1-9]\\d*$"},
+    "entity_id": {"type": "string", "pattern": "^e[1-9]\\d*$"},
+    "observation_id": {"type": "string", "pattern": "^o[1-9]\\d*$"},
+    "identity_link_id": {"type": "string", "pattern": "^i[1-9]\\d*$"},
+    "claim_id": {"type": "string", "pattern": "^c[1-9]\\d*$"},
+    "entity_or_camera_id": {"type": "string", "pattern": "^(?:e[1-9]\\d*|cam[1-9]\\d*)$"}
+  }
+}

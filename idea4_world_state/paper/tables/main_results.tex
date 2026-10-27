@@ -1,0 +1,27 @@
+% Requires booktabs, already used in the team draft.
+% Source: frozen eval200/analysis/summary.json; values independently verified.
+\begin{table}[t]
+  \centering
+  \small
+  \setlength{\tabcolsep}{4pt}
+  \caption{Sparse-evidence answering on the same frozen 200 two-image
+  questions. Extraction failures and unsuccessful answers count as incorrect.
+  Paired intervals use 2,000 within-category bootstrap resamples.
+  All intervals include zero; Graph--Flat is the primary comparison.}
+  \label{tab:worldstate-main}
+  \begin{tabular}{lrr}
+    \toprule
+    Condition & Correct / $N$ & Accuracy (\%) \\
+    \midrule
+    Raw   & 57/200 & 28.5 \\
+    Flat  & 53/200 & 26.5 \\
+    Graph & 61/200 & 30.5 \\
+    \midrule
+    Comparison & $\Delta$ (pp) & 95\% CI (pp) \\
+    \midrule
+    Graph--Flat & $+4.0$ & $[-0.01,\,+8.50]$ \\
+    Graph--Raw  & $+2.0$ & $[-5.00,\,+9.00]$ \\
+    Flat--Raw   & $-2.0$ & $[-8.50,\,+4.50]$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}

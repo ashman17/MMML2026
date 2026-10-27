@@ -1,0 +1,55 @@
+{
+  "item_id": 170,
+  "source": "data/MMSI_Bench.parquet",
+  "image_sizes": [
+    [
+      640,
+      480
+    ],
+    [
+      640,
+      480
+    ]
+  ],
+  "inventory_source": "runs/idea4_world_state/eval200/inventories/170.json",
+  "extraction_cache_key": "30b0481bef1dbf8f537fc368f9426a72823190673e30c3d9fcab5db25ac55796",
+  "parser_repairs": [],
+  "predictions": {
+    "raw": "D",
+    "flat": "D",
+    "graph": "B"
+  },
+  "gold": "B",
+  "selection": "Outcome-selected Graph-only success; descriptive example.",
+  "positions": {
+    "o1": [
+      0.54,
+      0.52
+    ],
+    "o2": [
+      0.25,
+      0.24
+    ],
+    "o3": [
+      0.72,
+      0.75
+    ],
+    "o4": [
+      0.54,
+      0.52
+    ],
+    "o5": [
+      0.25,
+      0.24
+    ],
+    "o6": [
+      0.72,
+      0.75
+    ]
+  },
+  "positions_source": "Manually placed after visual inspection, not model output.",
+  "lines": "Observation membership in shared entity IDs; not spatial-relation edges.",
+  "schema_excerpt": "Selected fields only; ellipses omit observation descriptions.",
+  "graph_excerpt": "Entity e1 only; cross-view metadata placed on its own line for layout.",
+  "checks": "Raw extraction matches inventory; no repairs; Flat and Graph atoms match."
+}

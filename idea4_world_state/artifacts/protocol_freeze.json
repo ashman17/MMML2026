@@ -1,0 +1,425 @@
+{
+  "active_profile": "eval200",
+  "budget_inputs": {
+    "allocation_su": 92.0,
+    "deadline": "2027-09-30",
+    "gpu": "l40s",
+    "planning_allowance": 1.3,
+    "profiles": {
+      "eval100": {
+        "fits_allocation": true,
+        "fits_deadline": true,
+        "hours_with_allowance": 1.4750965735458346,
+        "jobs": 1,
+        "padded_hours": 0.9750965735458346,
+        "projection_hours": 0.7500742873429497,
+        "startup_hours": 0.5,
+        "su": 1.4750965735458346
+      },
+      "eval200": {
+        "fits_allocation": true,
+        "fits_deadline": true,
+        "hours_with_allowance": 1.8300210947676043,
+        "jobs": 1,
+        "padded_hours": 1.3300210947676043,
+        "projection_hours": 1.0230931498212341,
+        "startup_hours": 0.5,
+        "su": 1.8300210947676043
+      }
+    },
+    "queue_delay_hours": null,
+    "startup_hours_per_job": 0.5,
+    "su_per_gpu_hour": 1,
+    "usable_inference_hours_per_job": 3.5,
+    "walltime_hours": 4.0
+  },
+  "decision": "eval200",
+  "dev_run_ids": [
+    575,
+    583,
+    955,
+    619,
+    783,
+    809,
+    356,
+    188,
+    531,
+    528,
+    912,
+    33,
+    784,
+    524,
+    319,
+    14,
+    236,
+    235,
+    734,
+    721,
+    3,
+    505
+  ],
+  "frozen_at": "2026-10-25T00:53:07Z",
+  "frozen_by": "zhengfeili",
+  "id_list_sha256": "efcc9f0272a5653d7d129b9b7851d09fefd3c7cf059d8f5be4283c9a6484e76c",
+  "inventory_schema_sha256": "11d3abac5e6f98e9c7a0eab24cdd87ce17e4b0e1581ccb537334f9449801362f",
+  "model_identity": {
+    "dtype": "bfloat16",
+    "max_model_len": 32768,
+    "mm_processor_kwargs": null,
+    "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+    "quantization": null,
+    "resolved_revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+    "served_model_name": "qwen3-vl-8b",
+    "vllm_version": "0.32.0"
+  },
+  "parser_policy": {
+    "cross_view_repair": {
+      "field": "cross_view",
+      "status": "same",
+      "uncertainty": "medium",
+      "uncertainty_source": "parser_default",
+      "when": "same entity id is observed in two or more images and cross_view is null"
+    }
+  },
+  "pass_criteria": {
+    "answer_parse_rate_minimum": 1.0,
+    "concurrency_speedup_minimum": 1.15,
+    "dev_extraction_truncated_maximum": 1,
+    "dev_item_denominator": 22,
+    "dev_schema_valid_minimum": 20,
+    "planning_allowance": 1.3,
+    "startup_hours_per_job": 0.5,
+    "su_per_gpu_hour": {
+      "h100": 2,
+      "l40s": 1
+    },
+    "synthetic10_max_prompt_tokens": 30000
+  },
+  "pass_criteria_results": [
+    {
+      "detail": "observed=0 limit=0 (no transport_error in attempts.jsonl)",
+      "name": "dev_transport",
+      "passed": true
+    },
+    {
+      "detail": "observed=22 minimum=20 of 22",
+      "name": "extraction_schema_valid",
+      "passed": true
+    },
+    {
+      "detail": "observed=0 maximum=1 of 22",
+      "name": "extraction_truncated",
+      "passed": true
+    },
+    {
+      "detail": "observed=22/22 minimum=1.0",
+      "name": "raw_answer_parsing",
+      "passed": true
+    },
+    {
+      "detail": "observed=44/44 minimum=1.0 where extraction succeeded",
+      "name": "evidence_answer_parsing",
+      "passed": true
+    },
+    {
+      "detail": "observed=22/22",
+      "name": "fact_atom_equivalence",
+      "passed": true
+    },
+    {
+      "detail": "prompt_tokens=5876.0 maximum=30000",
+      "name": "synthetic10",
+      "passed": true
+    }
+  ],
+  "projection_hours": {
+    "eval100": 0.7500742873429497,
+    "eval200": 1.0230931498212341
+  },
+  "prompt_files": {
+    "prompts/extract_v1.txt": "4445ee8041987b8c36af5716f217036b7186565ee69281f1c69469fa0c9e613c",
+    "prompts/extract_v2.txt": "6758c0553b39c4720c5d04ebea0def6f2d8b1622bee7ec30b73b78722f35b364",
+    "prompts/extract_v3.txt": "9deaedf64d520bcf82ce55289335f3c8d609a758ab2296b7f602a93b9a6bfba4",
+    "prompts/extract_v4.txt": "2bbd5b6e90b0893082e2ebb662b44193c20d008523b188c335828eb2f67a99d6"
+  },
+  "prompt_revision_history": [
+    {
+      "path": "prompts/extract_v1.txt",
+      "sha256": "4445ee8041987b8c36af5716f217036b7186565ee69281f1c69469fa0c9e613c"
+    },
+    {
+      "path": "prompts/extract_v2.txt",
+      "sha256": "6758c0553b39c4720c5d04ebea0def6f2d8b1622bee7ec30b73b78722f35b364"
+    },
+    {
+      "path": "prompts/extract_v3.txt",
+      "sha256": "9deaedf64d520bcf82ce55289335f3c8d609a758ab2296b7f602a93b9a6bfba4"
+    },
+    {
+      "path": "prompts/extract_v4.txt",
+      "sha256": "2bbd5b6e90b0893082e2ebb662b44193c20d008523b188c335828eb2f67a99d6"
+    }
+  ],
+  "prompt_sha256": {
+    "extract": "6e346daf0a3075c6e0cc08f3487270c71b361559de48b83985662def974c8e03",
+    "flat": "77eb57f6552405fe8a6e6d3e1d9bea3a7b21e3783c6b47f9344d0da98936ec50",
+    "graph": "411eb073986c12b773a8b21ea390dadd7d3da27c2dbdecfc0c0d18f3e4cdc217",
+    "raw": "c8fd931e03b95af2b62268e5e2172d902d2cb332e9395ca38a40e1f07d2f680a"
+  },
+  "protocol_version": "ws-freeze-1",
+  "rationale": "Projected compute is 1.0231 h for eval200 and 0.7501 h for eval100 at concurrency 1. Hours with allowance are 1.8300 (1.8300 SU) and 1.4751 (1.4751 SU) against 92.0 SU on l40s before 2027-09-30. Concurrency 2 was not measured. The server log out-of-memory and preemption check is a human confirmation; freeze does not read the server log. Modeled hours are padded inference plus per-job startup, using usable inference time of 3.5000 h per job. Queue delay is not included in the modeled compute time or the deadline comparison. Selected eval200.",
+  "serializer_code_sha256": "cf09471df64d1d857ef75264496c1e163d724f87eae6fb3b0e1080b46c4319c0",
+  "server_manifest_sha256": "361bc039f7bad7b9203c2e66c3554a677e2b862a3dd16adc3aa9c85ca467355e",
+  "settings": {
+    "answer_tokens": 64,
+    "concurrency": 1,
+    "extract_tokens": 4096,
+    "max_side": 768,
+    "timeout": 300
+  },
+  "timing_run_ids": [
+    78,
+    13,
+    72,
+    75,
+    77,
+    223
+  ],
+  "timing_summary": {
+    "aggregation": "mean raw latency at each n_images",
+    "concurrency": 1,
+    "fit_points": [
+      {
+        "latency_seconds": 0.7865355473371561,
+        "n_images": 2
+      },
+      {
+        "latency_seconds": 1.7779592501465231,
+        "n_images": 3
+      },
+      {
+        "latency_seconds": 2.037218957906589,
+        "n_images": 4
+      },
+      {
+        "latency_seconds": 2.088821791112423,
+        "n_images": 5
+      },
+      {
+        "latency_seconds": 1.8868016668129712,
+        "n_images": 6
+      },
+      {
+        "latency_seconds": 3.91433595912531,
+        "n_images": 7
+      },
+      {
+        "latency_seconds": 3.622840292053297,
+        "n_images": 8
+      },
+      {
+        "latency_seconds": 0.961053374921903,
+        "n_images": 10
+      }
+    ],
+    "intercept": 1.3715562352668575,
+    "mean_latency_seconds": {
+      "extract": 8.451609700685367,
+      "flat_answer": 0.5903424885420298,
+      "graph_answer": 0.786726859990846
+    },
+    "note": "Concurrency 2 was not measured. The server log out-of-memory and preemption check is a human confirmation; freeze does not read the server log.",
+    "points": [
+      {
+        "id": 14,
+        "latency_seconds": 0.8225845831912011,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 188,
+        "latency_seconds": 0.7146390001289546,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 235,
+        "latency_seconds": 1.0823043331038207,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 236,
+        "latency_seconds": 1.1359514161013067,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 319,
+        "latency_seconds": 0.21193649992346764,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 33,
+        "latency_seconds": 1.0553822088986635,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 356,
+        "latency_seconds": 1.276042291894555,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 3,
+        "latency_seconds": 0.8892919169738889,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 505,
+        "latency_seconds": 0.7492037501651794,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 524,
+        "latency_seconds": 0.62228958401829,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 528,
+        "latency_seconds": 0.44158816686831415,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 531,
+        "latency_seconds": 0.8514369160402566,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 575,
+        "latency_seconds": 0.7590833329595625,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 583,
+        "latency_seconds": 0.7855628752149642,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 619,
+        "latency_seconds": 0.4133134998846799,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 721,
+        "latency_seconds": 0.8812842080369592,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 734,
+        "latency_seconds": 0.8032848329748958,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 783,
+        "latency_seconds": 0.8212735839188099,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 784,
+        "latency_seconds": 0.751043374883011,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 809,
+        "latency_seconds": 1.0598622080869973,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 912,
+        "latency_seconds": 0.3182112080976367,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 955,
+        "latency_seconds": 0.85821225005202,
+        "n_images": 2,
+        "source": "dev"
+      },
+      {
+        "id": 13,
+        "latency_seconds": 2.037218957906589,
+        "n_images": 4,
+        "source": "timing"
+      },
+      {
+        "id": 223,
+        "latency_seconds": 3.622840292053297,
+        "n_images": 8,
+        "source": "timing"
+      },
+      {
+        "id": 72,
+        "latency_seconds": 2.088821791112423,
+        "n_images": 5,
+        "source": "timing"
+      },
+      {
+        "id": 75,
+        "latency_seconds": 1.8868016668129712,
+        "n_images": 6,
+        "source": "timing"
+      },
+      {
+        "id": 77,
+        "latency_seconds": 3.91433595912531,
+        "n_images": 7,
+        "source": "timing"
+      },
+      {
+        "id": 78,
+        "latency_seconds": 1.7779592501465231,
+        "n_images": 3,
+        "source": "timing"
+      },
+      {
+        "id": "synthetic10",
+        "latency_seconds": 0.961053374921903,
+        "n_images": 10,
+        "source": "synthetic10"
+      }
+    ],
+    "projected_seconds": {
+      "eval100": 2700.2674344346187,
+      "eval200": 3683.135339356443
+    },
+    "runs": {
+      "concurrency": null,
+      "dev": "runs/idea4_world_state/dev_sparse",
+      "synthetic": "runs/idea4_world_state/synthetic10_sparse",
+      "timing": "runs/idea4_world_state/timing_sparse"
+    },
+    "sequential_seconds": {
+      "eval100": 2700.2674344346187,
+      "eval200": 3683.135339356443
+    },
+    "slope": 0.13562482127291806,
+    "speedup": null
+  }
+}

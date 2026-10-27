@@ -1,0 +1,84 @@
+% Standalone section. Not assigned to the "Research Idea 1" placeholder.
+%
+% Integration notes for the shared report, not part of the section text:
+% - The shared methodology describes a disjoint 100+300+700 split. Those
+%   sizes sum to 1,100, and they do not describe this sample.
+% - The shared Qwen2.5-VL baseline, 1,000-resample intervals, and McNemar
+%   tests do not describe this section. Do not rank its accuracy against
+%   the other ideas.
+% - Compile from this directory with \WorldStateDir set to "." (the default).
+%   From the report root, set
+%   \renewcommand{\WorldStateDir}{idea4_world_state/paper}
+%   before \input. Merge worldstate.bib into references.bib; skip
+%   yang2025mmsi if that key already exists.
+%
+\providecommand{\WorldStateDir}{.}
+\providecommand{\texorpdfstring}[2]{#1}
+
+\section{\texorpdfstring{Structured World-State Evidence\\ for Multi-Image Spatial Reasoning}{Structured World-State Evidence for Multi-Image Spatial Reasoning}}
+\label{sec:worldstate}
+
+\subsection{Initial Implementation}
+
+Multi-image spatial reasoning combines observations across views through later inferential steps, using alignment between the images and structure in the problem. Qwen3-VL-8B-Instruct is an autoregressive visual-language model: a visual encoder and connector still pass the photographs to the language decoder, and we leave that pathway fixed~\citep{bai2025qwen3vl}. The intervention is an additional language-side state. Scene graphs make object relations explicit~\citep{xu2017scenegraph}. The Neural State Machine reasons over a probabilistic graph of that kind, with edges drawn from a fixed relation alphabet~\citep{hudson2019nsm}, and Socratic Models carry visual observations through language before a later reasoning step~\citep{zeng2022socratic}. We test a sparse version of that interface on MMSI-Bench~\citep{yang2025mmsi}. Graph and Flat present the same extracted evidence; only the serialization changes. Raw is a direct-answer reference with the images and no inventory. The question is how visual evidence is made explicit for the decoder. It complements external camera geometry and answer-preserving transformation checks in the other ideas. Models, samples, and interval procedures differ, so the accuracies should not be ranked against one another.
+
+Let $I_1,I_2$ be the two images, $q$ the question stem, and $\mathcal{O}$ the options. Extraction, validation, and answering use one model with parameters $\theta$:
+\begin{equation}
+\begin{aligned}
+z &= V(E_\theta(I_1,I_2,q)),\\
+\hat y_s &= \operatorname{Parse}(D_\theta(I_1,I_2,q,\mathcal{O},S_s(z))),
+\quad s\in\{\mathrm{Flat},\mathrm{Graph}\}.
+\end{aligned}
+\label{eq:worldstate}
+\end{equation}
+$E_\theta$ proposes an inventory from the images and the stem. It does not see the options or the gold label. $V$ validates the schema and applies a deterministic normalization. $S_s$ renders that inventory, and $D_\theta$ then answers with the original images and options still in view. The decoder therefore aligns two channels: visual tokens from the photographs, and the language atoms in $S_s(z)$. Flat lists every statement in a fixed order. Graph groups each entity's observations under that entity and leaves an explicit slot for relation edges. The two serializers are deterministic functions of the same atoms. An invalid extraction is counted wrong for both evidence conditions, with no answer fallback.
+
+The inventory can contain entities, per-image observations, cross-view identities, reference frames, relation and attribute claims, and unknowns. In the accepted evaluation inventories the claim lists are empty, so the implemented graph is a sparse entity/observation graph: nodes and observations, without spatial-relation edges. Early visual-language models summarized an image with a few dozen object tokens, and later encoders moved to hundreds of patches because that object list dropped visual detail~\citep{kim2021vilt}. An accepted inventory here is thinner still, while the answer decoder continues to receive the image. Development on 22 questions shaped that outcome. The first prompt's only complete JSON example was empty, and 21 of the 22 accepted inventories repeated an empty statement. Revised instructions elicited objects and observations. Reusing one entity id across views with missing cross-view metadata is normalized to status \texttt{same} and uncertainty \texttt{medium}, and the uncertainty source is recorded as \texttt{parser\_default} rather than a model-estimated confidence. A final six-item check added a supported within-image relation example and still produced no claims, so the sparse prompt was frozen. Reading the empty-example run as imitation is an interpretation of that development pattern.
+
+The model is Qwen3-VL-8B-Instruct~\citep{bai2025qwen3vl}, decoded at temperature 0, with each image's long side at most 768 pixels.\footnote{Checkpoint revision \texttt{0c351dd0}\allowbreak\texttt{1ed87e9c}\allowbreak\texttt{1b53cbc7}\allowbreak\texttt{48cba10e}\allowbreak\texttt{6187ff3b}, bfloat16, vLLM 0.32.0, PSC L40S.} The underlying split is 500 development questions and 500 confirmation questions. The paired evaluation is a frozen, approximately category-balanced sample of 200 two-image confirmation questions across 11 categories. Exact-image groups used in development are excluded. Raw is also run on all 1{,}000 questions at their original image counts. The primary metric is accuracy on the full denominator, counting a truncated or unparsable answer wrong. The primary comparison is Graph minus Flat. Its 95\% interval uses 2{,}000 paired bootstrap resamples drawn within category, with seed 0. This 200-item sample is not a representative draw from all 1{,}000 questions, and it is not the split used by the other ideas.
+
+\subsection{Results and Discussion}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{\WorldStateDir/figures/item919.pdf}
+  \caption{Evidence omission on a bathroom question (item 919). With entry direction treated as the front, the question asks which object is directly in front of the door; the gold option is the toilet. The inventory names the door, bathtub, and shower curtain, and omits the toilet outlined in image 1. The outline is a human annotation. The entry direction is unresolved. Raw, Flat, and Graph all select the bathtub. Every condition receives the photographs. The case shows incomplete coverage accompanying a shared error, and supplying the missing entity remains untested.}
+  \label{fig:worldstate-919}
+\end{figure*}
+
+On the frozen 200 questions, Raw answers 57 correctly (28.5\%), Flat 53 (26.5\%), and Graph 61 (30.5\%; Table~\ref{tab:worldstate-main}). The primary Graph$-$Flat difference is $+4.0$ percentage points, with 95\% interval $[-0.01,+8.50]$. Graph corrects 15 Flat errors and introduces seven. The Graph$-$Raw and Flat$-$Raw intervals are $[-5.00,+9.00]$ and $[-8.50,+4.50]$. Every interval includes zero, so the positive point estimate does not establish an improvement. Separately, Raw answers 291 of all 1{,}000 questions correctly (29.1\%), with eight truncated outputs counted wrong. That full-benchmark score stays outside the paired table.
+
+\input{\WorldStateDir/tables/main_results}
+
+Encoded spatial relations do not account for the eight-item net gap. No accepted inventory contains a relation or attribute edge. On all 15 Graph-over-Flat corrections, the inventory's unknown field abstains on the relation the question asks for. Eight of those 15 are already correct under Raw. Item 170 is the clearest grouped case among the seven questions Graph alone gets right. It asks which way the camera is rotating. The extractor marks a bottle, a tray, and a gripper as the same objects across views, the model supplies those cross-view flags itself, and both views use the same image regions and descriptions. The unknown states that the rotation direction is not supported. Graph selects the gold letter; Flat and Raw do not. The example is outcome-selected. The grouped text does not contain a downward relation, and seven questions flip in the other direction. A language trace is a flexible intermediate, and a supported trace can still fail to track the image. On the EMMA error analysis of o1, textual mistakes are under ten percent of the examined errors, and perceptual or visual-reasoning failures are about eighty percent~\citep{hao2025emma}. Those percentages come from another benchmark and another model. In this sample the related pattern is a small presentation effect beside errors that remain when every condition already sees the photographs.
+
+Extraction accepts an inventory for 183 of 200 questions (91.5\%). Those inventories average 2.79 entities and 3.40 observations. No validated inventory contains a claim. Eight of the 17 rejected responses did attempt claims: seven fail first on a missing claim field, and one fails first on an invalid identity link. A first failure does not exhaust the defects in that response. The 17 extraction failures stay in the primary denominator for both evidence conditions. On the same 183 accepted inventories, the post-hoc scores are Raw 52, Flat 53, and Graph 61. Raw is correct on 5 of the 17 extraction failures. This conditional slice is not an estimate of what repairing extraction would do.
+
+A 20-item audit of accepted inventories, balanced across categories and chosen independently of correctness, asks whether the extracted statements hold and whether task-relevant evidence is missing. Codex proposed the first-pass labels. Zhengfei Li reviewed the packet and endorsed or revised the wording; the reviewer field in the CSV still records the original Codex attribution. The packet initially hid the options, gold answers, and predictions. Some revisions were made after those outcomes were visible, so the finalized audit is AI-assisted, human-reviewed annotation, with partial outcome exposure. It is not independent human annotation, and the final pass is not fully blinded. Of 77 observation statements, 69 are judged supported, four contradicted, two unsupported, and two impossible to judge. Camera aliases are treated as structural bookkeeping and are left out of these support counts. A bare unknown is an abstention, not an incorrect spatial claim. All 20 inventories are judged to omit critical evidence. That count is a description of this review packet. It is not a dataset-level recall estimate, and the omissions are not 20 missing objects: they include entities, measurements, correspondences, spatial relations, and reference frames. A missing explicit relation also does not show that the image-aware answerer is unable to infer it, because both evidence conditions still see the photographs.
+
+Item 919 is the concrete case (Figure~\ref{fig:worldstate-919}): the gold toilet is visible and absent from the inventory, and all three conditions select the bathtub.
+
+Including extraction, Flat and Graph each take about seven times Raw's summed request latency on the paired sample (about 286 seconds for Raw, and about 2{,}000 seconds for either evidence method). This is cached request latency, not billed GPU time or job wall time. Extraction is about 90\% of the evidence-method total and is shared, so the two method totals must not be added as if extraction ran twice. Other limits belong with the estimate. The sample has 200 two-image questions and one checkpoint. Accepted evidence is sparse. The audit is descriptive and partly outcome-aware. A strict parser that accepts only a letter wrapped in single or double backticks scores 3.5\%, 0.5\%, and 1.0\%. Most outputs are unambiguous bare letters, so strict accuracy is a format diagnostic, not a second measure of reasoning.
+
+\subsection{Updated Research Idea}
+
+The useful next step is to build the missing relational state in stages, and to validate each stage, instead of asking one call to emit a full world-state schema. For each image $i$,
+\begin{equation}
+\begin{aligned}
+O_i &= E_{\mathrm{local}}(I_i,q),\\
+M &= \operatorname{Match}(O_1,O_2),\\
+G &= \operatorname{Fuse}(O_1,O_2,M).
+\end{aligned}
+\label{eq:worldstate-staged}
+\end{equation}
+First, extract question-relevant local entities, attributes, and relations, each with explicit visual support, and keep candidate entities when cross-view geometry is uncertain. This pass should also choose where to look. A one-shot inventory at fixed resolution can describe the shower curtain and omit the toilet the question is about; active perception spends further resolution on a selected region and keeps that view as working memory~\citep{wu2024vstar}. Second, match entities across views, distinguishing an uncertain link from a confirmed merge and recording whether the uncertainty came from the model or from a parser default. That match is the alignment between the two visual observations. Third, add relations in named reference frames. ``In front of the door'' is a predicate in the entry frame, not a label on one entity, so the relation is the compositional step a flat list skips. Separate checks can then tell an observation failure from a matching failure or a schema failure.
+
+The comparison point is this frozen sparse baseline. Raw, Flat, and Graph stay in the design so a gain from better evidence can be separated from a gain from presentation. Besides end-to-end accuracy, the evaluation should measure question-relevant coverage and the quality of grounded relations. A manually supplemented inventory, labeled as an oracle diagnostic, edits that language state and leaves the photographs fixed, so a change in accuracy is tied to the omitted evidence. Camera relations from VGGT are a possible later collaboration with the geometry idea, not part of the method run here. Agreement under answer-preserving transformations, as studied in the transformation idea, is a complementary diagnostic. It does not by itself show that a graph or an answer is correct.
+
+% ----- Excluded AI-use / contribution page. Do not count toward the 10 pages.
+% Zhengfei Li designed the world-state comparison, froze the protocol, ran
+% Qwen3-VL-8B-Instruct inference, reviewed the artifacts, and verified the
+% audit labels and the wording of this section. Codex proposed the first-pass
+% audit labels and assisted implementation. Grok assisted drafting this
+% section from the frozen results, the finalized audit, and the outline.
+% The CSV reviewer field remains Codex; the human review is described above.

@@ -1,0 +1,53 @@
+{
+  "schema_version": "ws-1",
+  "query_frame": {"frame": "unknown", "basis": "the stem does not name a viewpoint"},
+  "temporal_order": {"status": "unknown", "order": null, "basis": null},
+  "cameras": [
+    {"id": "cam1", "image_id": "image_1"},
+    {"id": "cam2", "image_id": "image_2"}
+  ],
+  "entities": [
+    {
+      "id": "e1",
+      "type": "object",
+      "label": "box",
+      "cross_view": {"status": "same", "uncertainty": "high"}
+    },
+    {"id": "e2", "type": "region", "label": "floor area", "cross_view": null}
+  ],
+  "observations": [
+    {"id": "o1", "entity": "e1", "image_id": "image_1", "where": "unknown", "description": "a box"},
+    {"id": "o2", "entity": "e1", "image_id": "image_2", "where": "unknown", "description": "a box again"},
+    {"id": "o3", "entity": "e2", "image_id": "image_1", "where": "bottom", "description": "floor"}
+  ],
+  "identity_links": [],
+  "claims": [
+    {
+      "id": "c1",
+      "kind": "relation",
+      "subject": "e1",
+      "predicate": "on",
+      "object": "e2",
+      "value": null,
+      "frame": "unknown",
+      "image_id": null,
+      "support": ["o1", "o3"],
+      "uncertainty": "high",
+      "note": null
+    },
+    {
+      "id": "c2",
+      "kind": "attribute",
+      "subject": "e1",
+      "predicate": "other",
+      "object": null,
+      "value": "worn",
+      "frame": "unknown",
+      "image_id": null,
+      "support": ["o1"],
+      "uncertainty": "medium",
+      "note": "surface looks scuffed"
+    }
+  ],
+  "unknowns": ["which camera frame the on relation belongs to"]
+}

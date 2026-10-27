@@ -1,0 +1,114 @@
+{
+  "valid_full.json": {
+    "n_images": 2,
+    "json_parses": true,
+    "schema_valid": true,
+    "semantically_valid": true,
+    "reason": "Section 8.3 example inventory"
+  },
+  "valid_empty.json": {
+    "n_images": 2,
+    "json_parses": true,
+    "schema_valid": true,
+    "semantically_valid": true,
+    "reason": "empty inventory with cameras, unknown frame, unknown temporal order, and an explicit unknown"
+  },
+  "valid_tentative_identity.json": {
+    "n_images": 2,
+    "json_parses": true,
+    "schema_valid": true,
+    "semantically_valid": true,
+    "reason": "two single-view entities joined by a tentative identity link"
+  },
+  "valid_changing_observation.json": {
+    "n_images": 2,
+    "json_parses": true,
+    "schema_valid": true,
+    "semantically_valid": true,
+    "reason": "observations and state claims tied to image ids, with supported temporal order and an object-motion claim"
+  },
+  "valid_unknown_frame.json": {
+    "n_images": 2,
+    "json_parses": true,
+    "schema_valid": true,
+    "semantically_valid": true,
+    "reason": "unknown query frame and unknown relation frame preserved, with an other-predicate note"
+  },
+  "invalid_unresolved_ref.json": {
+    "n_images": 2,
+    "json_parses": true,
+    "schema_valid": true,
+    "semantically_valid": false,
+    "reason": "claim c1 object e9 does not resolve to an entity or camera"
+  },
+  "invalid_over_limit.json": {
+    "n_images": 2,
+    "json_parses": true,
+    "schema_valid": false,
+    "semantically_valid": false,
+    "reason": "9 entities exceeds the maximum of 8"
+  },
+  "invalid_truncated.txt": {
+    "n_images": 2,
+    "json_parses": false,
+    "schema_valid": false,
+    "semantically_valid": false,
+    "reason": "JSON cut mid-object"
+  },
+  "invalid_image_plane_mismatch.json": {
+    "n_images": 2,
+    "json_parses": true,
+    "schema_valid": true,
+    "semantically_valid": false,
+    "reason": "frame image_plane:image_1 has image_id image_2"
+  },
+  "invalid_motion_endpoints.json": {
+    "n_images": 2,
+    "json_parses": true,
+    "schema_valid": true,
+    "semantically_valid": false,
+    "reason": "camera-motion relation uses an entity endpoint"
+  },
+  "invalid_state_without_image.json": {
+    "n_images": 2,
+    "json_parses": true,
+    "schema_valid": true,
+    "semantically_valid": false,
+    "reason": "state attribute has a null image_id"
+  },
+  "invalid_cross_view_missing.json": {
+    "n_images": 2,
+    "json_parses": true,
+    "schema_valid": true,
+    "semantically_valid": true,
+    "reason": "entity observed in two images with null cross_view is completed to same/medium"
+  },
+  "invalid_other_without_note.json": {
+    "n_images": 2,
+    "json_parses": true,
+    "schema_valid": true,
+    "semantically_valid": false,
+    "reason": "predicate other has a null note"
+  },
+  "invalid_temporal_not_permutation.json": {
+    "n_images": 2,
+    "json_parses": true,
+    "schema_valid": true,
+    "semantically_valid": false,
+    "reason": "supported temporal order is not a permutation of the input images"
+  },
+  "invalid_duplicate_id.json": {
+    "n_images": 2,
+    "json_parses": true,
+    "schema_valid": true,
+    "semantically_valid": false,
+    "reason": "entity id e1 is repeated"
+  },
+  "invalid_camera_count.json": {
+    "n_images": 2,
+    "json_parses": true,
+    "schema_valid": true,
+    "semantically_valid": false,
+    "reason": "one camera for two input images"
+  }
+}

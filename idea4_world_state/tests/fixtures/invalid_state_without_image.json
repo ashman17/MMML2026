@@ -1,0 +1,32 @@
+{
+  "schema_version": "ws-1",
+  "query_frame": {"frame": "unknown", "basis": null},
+  "temporal_order": {"status": "unknown", "order": null, "basis": null},
+  "cameras": [
+    {"id": "cam1", "image_id": "image_1"},
+    {"id": "cam2", "image_id": "image_2"}
+  ],
+  "entities": [
+    {"id": "e1", "type": "object", "label": "door", "cross_view": null}
+  ],
+  "observations": [
+    {"id": "o1", "entity": "e1", "image_id": "image_1", "where": "center", "description": "door"}
+  ],
+  "identity_links": [],
+  "claims": [
+    {
+      "id": "c1",
+      "kind": "attribute",
+      "subject": "e1",
+      "predicate": "state",
+      "object": null,
+      "value": "open",
+      "frame": "unknown",
+      "image_id": null,
+      "support": ["o1"],
+      "uncertainty": "low",
+      "note": null
+    }
+  ],
+  "unknowns": ["state claim has no image"]
+}

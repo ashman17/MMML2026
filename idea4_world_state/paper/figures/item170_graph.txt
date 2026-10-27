@@ -1,0 +1,19 @@
+World state graph extracted by a model from the images (may be incomplete or wrong):
+Query frame: unknown
+Temporal order: unknown
+Nodes:
+  cam1 [camera] image_1
+  cam2 [camera] image_2
+  e1 [object] "glicerine bottle" | cross-view: same (uncertainty medium)
+    o1 @image_1 center: "glicerine bottle held by a robotic gripper"
+    o4 @image_2 center: "glicerine bottle held by a robotic gripper"
+  e2 [object] "blue tray" | cross-view: same (uncertainty medium)
+    o2 @image_1 top_left: "blue tray in the background"
+    o5 @image_2 top_left: "blue tray in the background"
+  e3 [object] "black robotic gripper" | cross-view: same (uncertainty medium)
+    o3 @image_1 bottom: "black robotic gripper holding the bottle"
+    o6 @image_2 bottom: "black robotic gripper holding the bottle"
+Identity links: none
+Edges by frame: none
+Unknowns:
+  u1 camera rotation direction between the two images is not supported

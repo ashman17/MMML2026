@@ -1,0 +1,13 @@
+{
+  "schema_version": "ws-1",
+  "query_frame": {"frame": "unknown", "basis": null},
+  "temporal_order": {"status": "unknown", "order": null, "basis": null},
+  "cameras": [
+    {"id": "cam1", "image_id": "image_1"}
+  ],
+  "entities": [],
+  "observations": [],
+  "identity_links": [],
+  "claims": [],
+  "unknowns": ["missing camera for image 2"]
+}

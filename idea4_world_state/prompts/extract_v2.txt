@@ -1,0 +1,31 @@
+Return exactly one JSON object and nothing else. Put it bare, or inside one ``` fence (an optional language tag is allowed). Do not add prose before or after it. Do not answer the question, choose an option, or guess a letter.
+
+Record only what the images support. Prefer an explicit unknown over a guess. uncertainty is your own low, medium, or high, not a calibrated probability. A thing you can see in one image is an entity plus an observation in that image, even when you cannot match it to another image or judge direction, height, motion, or time. cross_view stays null unless that same entity is visible in two or more images. An uncertain match is an identity_link with status "tentative", or an unknown, not a reason to drop the entities. A claim is only for a relation or attribute the images support. If they do not, leave claims empty and put the gap in unknowns. Do not hide a visible object inside unknowns alone. query_frame.frame is "unknown" unless the requested frame is supported. temporal_order is unknown unless the pictures themselves show an order. Empty entity and observation lists are valid only when the images support no object or region.
+
+Limits: at most 8 entities, 32 observations, 8 identity links, 24 claims, and 8 unknowns. Maximum lengths: label 60, description 120, value 60, note 120, basis 160, and unknown 200 characters. Any property not in the schema makes the output invalid. Ids are unique within each list, and every reference must resolve.
+
+Cameras: exactly one per image, in input order. The part labeled Image K is image_K, and camK took image_K (cam1 took image_1, cam2 took image_2, and so on).
+
+Entities (e1..) have type object or region. cross_view is non-null if and only if the entity is observed in 2 or more images; status is then "same", with uncertainty. Otherwise cross_view is null. identity_links (i1..) record uncertain or different identity between two entities: status "tentative" or "different". Do not merge those into one entity.
+
+Observations (o1..) name an entity or a camera, an image_id, where (left, center, right, top, bottom, top_left, top_right, bottom_left, bottom_right, or unknown), and a description.
+
+Claims (c1..): a relation needs an object and value null; an attribute needs a value and object null. support is a non-empty list of observation ids. note is null or a string, and note is required for predicate other.
+
+Frames: image_plane:image_k is 2D left/right/up/down in that picture; camera:camk is that camera's egocentric 3D; entity:eN is allocentric; unknown is none of these. query_frame.frame uses the same grammar. An image-plane direction is not a camera-relative claim.
+
+image_id rules: frame image_plane:image_k needs image_id image_k. Camera-motion relations, object-motion relations, and state attributes need an image_id, the image of the later position or the changed state. Any other claim may set image_id for one view, or null when the claim holds across views. Direction-free attributes (color, shape, material, text, state, count) use frame unknown. state still needs an image_id.
+
+Motion endpoints: camera motion joins two different cameras; the subject is the later camera and the object is the reference camera. Object motion has an entity subject, and the object is a camera or a different entity.
+
+Image order is not time. Set temporal_order to supported only when the pictures themselves show an order, and then list every image id exactly once, with a basis. Otherwise status is unknown and order and basis are null.
+
+Relation predicates: left_of, right_of, in_front_of, behind, above, below, on, inside, near, far_from, adjacent_to, facing, camera_rotated_left, camera_rotated_right, camera_moved_forward, camera_moved_backward, camera_moved_left, camera_moved_right, camera_moved_up, camera_moved_down, moved_left, moved_right, moved_toward, moved_away_from, moved_up, moved_down, other. Attribute predicates: color, shape, material, size, count, length, height, distance, text, state, other. No coordinates, poses, or bounding boxes. A measurement value is a short string such as "about 2 m".
+
+JSON Schema (structure, enums, and limits; additional properties are forbidden):
+{{INVENTORY_SCHEMA_JSON}}
+
+Example when each image shows a different object and the relation between them is not supported. Record the objects you see; do not copy these labels onto a different scene. One camera per image, in order:
+```json
+{"schema_version":"ws-1","query_frame":{"frame":"unknown","basis":null},"temporal_order":{"status":"unknown","order":null,"basis":null},"cameras":[{"id":"cam1","image_id":"image_1"},{"id":"cam2","image_id":"image_2"}],"entities":[{"id":"e1","type":"object","label":"flowerpot","cross_view":null},{"id":"e2","type":"object","label":"faucet","cross_view":null}],"observations":[{"id":"o1","entity":"e1","image_id":"image_1","where":"center","description":"flowerpot on the table"},{"id":"o2","entity":"e2","image_id":"image_2","where":"left","description":"faucet at the sink"}],"identity_links":[],"claims":[],"unknowns":["which object is lower; the two views do not show a shared height"]}
+```

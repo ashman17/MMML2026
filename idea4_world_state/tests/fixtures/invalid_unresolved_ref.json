@@ -1,0 +1,32 @@
+{
+  "schema_version": "ws-1",
+  "query_frame": {"frame": "unknown", "basis": null},
+  "temporal_order": {"status": "unknown", "order": null, "basis": null},
+  "cameras": [
+    {"id": "cam1", "image_id": "image_1"},
+    {"id": "cam2", "image_id": "image_2"}
+  ],
+  "entities": [
+    {"id": "e1", "type": "object", "label": "cup", "cross_view": null}
+  ],
+  "observations": [
+    {"id": "o1", "entity": "e1", "image_id": "image_1", "where": "left", "description": "a cup"}
+  ],
+  "identity_links": [],
+  "claims": [
+    {
+      "id": "c1",
+      "kind": "relation",
+      "subject": "e1",
+      "predicate": "left_of",
+      "object": "e9",
+      "value": null,
+      "frame": "image_plane:image_1",
+      "image_id": "image_1",
+      "support": ["o1"],
+      "uncertainty": "low",
+      "note": null
+    }
+  ],
+  "unknowns": ["where e9 is"]
+}

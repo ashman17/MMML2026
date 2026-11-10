@@ -1,0 +1,33 @@
+{
+  "schema_version": "ws-1",
+  "query_frame": {"frame": "unknown", "basis": null},
+  "temporal_order": {"status": "unknown", "order": null, "basis": null},
+  "cameras": [
+    {"id": "cam1", "image_id": "image_1"},
+    {"id": "cam2", "image_id": "image_2"}
+  ],
+  "entities": [
+    {"id": "e1", "type": "object", "label": "chair", "cross_view": null},
+    {"id": "e2", "type": "region", "label": "doorway", "cross_view": null}
+  ],
+  "observations": [
+    {"id": "o1", "entity": "e1", "image_id": "image_1", "where": "left", "description": "chair"}
+  ],
+  "identity_links": [],
+  "claims": [
+    {
+      "id": "c1",
+      "kind": "relation",
+      "subject": "e1",
+      "predicate": "left_of",
+      "object": "e2",
+      "value": null,
+      "frame": "image_plane:image_1",
+      "image_id": "image_2",
+      "support": ["o1"],
+      "uncertainty": "low",
+      "note": null
+    }
+  ],
+  "unknowns": ["image plane does not match image_id"]
+}

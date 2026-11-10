@@ -1,0 +1,100 @@
+{
+  "cameras": [
+    {
+      "id": "cam1",
+      "image_id": "image_1"
+    },
+    {
+      "id": "cam2",
+      "image_id": "image_2"
+    }
+  ],
+  "claims": [],
+  "entities": [
+    {
+      "cross_view": {
+        "status": "same",
+        "uncertainty": "medium"
+      },
+      "id": "e1",
+      "label": "glicerine bottle",
+      "type": "object"
+    },
+    {
+      "cross_view": {
+        "status": "same",
+        "uncertainty": "medium"
+      },
+      "id": "e2",
+      "label": "blue tray",
+      "type": "object"
+    },
+    {
+      "cross_view": {
+        "status": "same",
+        "uncertainty": "medium"
+      },
+      "id": "e3",
+      "label": "black robotic gripper",
+      "type": "object"
+    }
+  ],
+  "identity_links": [],
+  "observations": [
+    {
+      "description": "glicerine bottle held by a robotic gripper",
+      "entity": "e1",
+      "id": "o1",
+      "image_id": "image_1",
+      "where": "center"
+    },
+    {
+      "description": "blue tray in the background",
+      "entity": "e2",
+      "id": "o2",
+      "image_id": "image_1",
+      "where": "top_left"
+    },
+    {
+      "description": "black robotic gripper holding the bottle",
+      "entity": "e3",
+      "id": "o3",
+      "image_id": "image_1",
+      "where": "bottom"
+    },
+    {
+      "description": "glicerine bottle held by a robotic gripper",
+      "entity": "e1",
+      "id": "o4",
+      "image_id": "image_2",
+      "where": "center"
+    },
+    {
+      "description": "blue tray in the background",
+      "entity": "e2",
+      "id": "o5",
+      "image_id": "image_2",
+      "where": "top_left"
+    },
+    {
+      "description": "black robotic gripper holding the bottle",
+      "entity": "e3",
+      "id": "o6",
+      "image_id": "image_2",
+      "where": "bottom"
+    }
+  ],
+  "query_frame": {
+    "basis": null,
+    "frame": "unknown"
+  },
+  "schema_version": "ws-1",
+  "temporal_order": {
+    "basis": null,
+    "order": null,
+    "status": "unknown"
+  },
+  "unknowns": [
+    "camera rotation direction between the two images is not supported"
+  ]
+}

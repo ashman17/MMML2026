@@ -1,0 +1,32 @@
+{
+  "schema_version": "ws-1",
+  "query_frame": {"frame": "unknown", "basis": null},
+  "temporal_order": {"status": "unknown", "order": null, "basis": null},
+  "cameras": [
+    {"id": "cam1", "image_id": "image_1"},
+    {"id": "cam2", "image_id": "image_2"}
+  ],
+  "entities": [
+    {"id": "e1", "type": "object", "label": "box", "cross_view": null}
+  ],
+  "observations": [
+    {"id": "o1", "entity": "e1", "image_id": "image_1", "where": "center", "description": "a box"}
+  ],
+  "identity_links": [],
+  "claims": [
+    {
+      "id": "c1",
+      "kind": "attribute",
+      "subject": "e1",
+      "predicate": "other",
+      "object": null,
+      "value": "worn",
+      "frame": "unknown",
+      "image_id": null,
+      "support": ["o1"],
+      "uncertainty": "medium",
+      "note": null
+    }
+  ],
+  "unknowns": ["other predicate without a note"]
+}

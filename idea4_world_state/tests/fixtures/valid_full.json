@@ -1,0 +1,26 @@
+{
+  "schema_version": "ws-1",
+  "query_frame": {"frame": "camera:cam2", "basis": "stem asks from the second viewpoint"},
+  "temporal_order": {"status": "unknown", "order": null, "basis": null},
+  "cameras": [{"id": "cam1", "image_id": "image_1"}, {"id": "cam2", "image_id": "image_2"}],
+  "entities": [
+    {"id": "e1", "type": "object", "label": "red chair",
+     "cross_view": {"status": "same", "uncertainty": "medium"}},
+    {"id": "e2", "type": "region", "label": "kitchen doorway", "cross_view": null}
+  ],
+  "observations": [
+    {"id": "o1", "entity": "e1", "image_id": "image_1", "where": "left", "description": "red chair by window"},
+    {"id": "o2", "entity": "e1", "image_id": "image_2", "where": "center", "description": "same chair, seen from behind"},
+    {"id": "o3", "entity": "e2", "image_id": "image_1", "where": "right", "description": "open doorway"}
+  ],
+  "identity_links": [],
+  "claims": [
+    {"id": "c1", "kind": "relation", "subject": "e1", "predicate": "left_of", "object": "e2",
+     "value": null, "frame": "image_plane:image_1", "image_id": "image_1",
+     "support": ["o1", "o3"], "uncertainty": "low", "note": null},
+    {"id": "c2", "kind": "attribute", "subject": "e1", "predicate": "color", "object": null,
+     "value": "red", "frame": "unknown", "image_id": null,
+     "support": ["o1"], "uncertainty": "low", "note": null}
+  ],
+  "unknowns": ["whether the doorway is visible in image 2"]
+}

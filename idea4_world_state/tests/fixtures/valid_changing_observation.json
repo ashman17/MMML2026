@@ -1,0 +1,68 @@
+{
+  "schema_version": "ws-1",
+  "query_frame": {"frame": "camera:cam1", "basis": "the stem describes the change from the first viewpoint"},
+  "temporal_order": {
+    "status": "supported",
+    "order": ["image_1", "image_2"],
+    "basis": "the door is closed in image_1 and open in image_2"
+  },
+  "cameras": [
+    {"id": "cam1", "image_id": "image_1"},
+    {"id": "cam2", "image_id": "image_2"}
+  ],
+  "entities": [
+    {
+      "id": "e1",
+      "type": "object",
+      "label": "door",
+      "cross_view": {"status": "same", "uncertainty": "low"}
+    }
+  ],
+  "observations": [
+    {"id": "o1", "entity": "e1", "image_id": "image_1", "where": "center", "description": "door is closed"},
+    {"id": "o2", "entity": "e1", "image_id": "image_2", "where": "center", "description": "door is open"}
+  ],
+  "identity_links": [],
+  "claims": [
+    {
+      "id": "c1",
+      "kind": "attribute",
+      "subject": "e1",
+      "predicate": "state",
+      "object": null,
+      "value": "closed",
+      "frame": "unknown",
+      "image_id": "image_1",
+      "support": ["o1"],
+      "uncertainty": "low",
+      "note": null
+    },
+    {
+      "id": "c2",
+      "kind": "attribute",
+      "subject": "e1",
+      "predicate": "state",
+      "object": null,
+      "value": "open",
+      "frame": "unknown",
+      "image_id": "image_2",
+      "support": ["o2"],
+      "uncertainty": "low",
+      "note": null
+    },
+    {
+      "id": "c3",
+      "kind": "relation",
+      "subject": "e1",
+      "predicate": "moved_away_from",
+      "object": "cam1",
+      "value": null,
+      "frame": "camera:cam1",
+      "image_id": "image_2",
+      "support": ["o1", "o2"],
+      "uncertainty": "medium",
+      "note": null
+    }
+  ],
+  "unknowns": ["what caused the door to change"]
+}

@@ -1,0 +1,19 @@
+{
+  "schema_version": "ws-1",
+  "query_frame": {"frame": "unknown", "basis": null},
+  "temporal_order": {"status": "unknown", "order": null, "basis": null},
+  "cameras": [
+    {"id": "cam1", "image_id": "image_1"},
+    {"id": "cam2", "image_id": "image_2"}
+  ],
+  "entities": [
+    {"id": "e1", "type": "object", "label": "chair", "cross_view": null}
+  ],
+  "observations": [
+    {"id": "o1", "entity": "e1", "image_id": "image_1", "where": "left", "description": "chair"},
+    {"id": "o2", "entity": "e1", "image_id": "image_2", "where": "right", "description": "chair again"}
+  ],
+  "identity_links": [],
+  "claims": [],
+  "unknowns": ["cross_view was left null"]
+}

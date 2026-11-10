@@ -1,0 +1,131 @@
+% Research Idea 2 (Mike Pupat). Requires booktabs and amsmath (both standard in the ICML template).
+% Notation is local to this section; align (I, q, y, f) with the Problem Statement if it uses different symbols.
+\section{Research Idea 2: Aiding the LLM with Geometric Evidence}
+\label{sec:idea2}
+
+In our second assignment, the error classification of LLM traces showed that more than 50\% of failures were due to spatial logic or cross-view reasoning errors, and the transformation analysis showed that Qwen2.5-VL-7B answers camera motion questions below chance (7.4\%). In both cases, the LLM has to guess how the camera moved between views from the images alone, which is exactly what ``expert'' 3D vision models are trained to do. Our idea is therefore to run such an expert model on the images, translate its output into text, and provide it to the LLM as supplementary material to the images and the question, so that the LLM can use it to bridge its reasoning gaps and in turn increase its success rate. As an additional safeguard, a second LLM call artificially judges the reasoning trace against the same geometric information.
+
+\subsection{Initial Implementation}
+\label{sec:idea2-impl}
+
+Each task consists of $V$ images (views) $\mathcal{I}=\{I_1,\dots,I_V\}$ ($2\le V\le 10$), a question $q$ that includes four options, and the correct answer $y\in\{A,B,C,D\}$. Given the images and the question, the LLM $f$ produces a reasoning trace and an answer, $(r,\hat{y})=f(\mathcal{I},q)$.
+
+The geometric evidence is provided by VGGT-1B~\citep{wang2025vggt}, a feed-forward transformer that predicts camera poses, depth and point maps for all views of a scene in a single pass. For each task, VGGT is run on all of its images together, and returns one tuple per image,
+\begin{equation}
+g(\mathcal{I})=\{(\mathbf{R}_k,\mathbf{t}_k,\mathbf{K}_k,C_k)\}_{k=1}^{V},
+\end{equation}
+where, for the camera that took image $I_k$:
+\begin{itemize}\itemsep0pt
+\item $\mathbf{R}_k\in SO(3)$ is a $3\times3$ rotation matrix and $\mathbf{t}_k\in\mathbb{R}^3$ a translation vector. Together they form the extrinsics, which map a 3D point $\mathbf{X}$ from the world frame into camera $k$'s frame, $\mathbf{X}_k=\mathbf{R}_k\mathbf{X}+\mathbf{t}_k$. The world frame is the frame of the first camera ($\mathbf{R}_1=\mathbf{I}$, $\mathbf{t}_1=\mathbf{0}$), and camera frames follow the OpenCV convention ($x$ points right, $y$ down and $z$ forward, in the direction the camera looks);
+\item $\mathbf{K}_k\in\mathbb{R}^{3\times3}$ contains the intrinsics (focal lengths and principal point), which describe how the camera projects 3D points onto the image;
+\item $C_k\in\mathbb{R}^{H\times W}$ is a per-pixel confidence map for VGGT's depth prediction, $H\times W$ being the resolution of the image fed to VGGT.
+\end{itemize}
+Only $\mathbf{R}_k$ and $\mathbf{t}_k$ are used in the hints; $\mathbf{K}_k$ and the median of $C_k$ are stored for later use. The position $\mathbf{c}_k$ and viewing direction $\mathbf{d}_k$ of camera $k$, both expressed in the first camera's frame, are then
+\begin{equation}
+\mathbf{c}_k=-\mathbf{R}_k^{\top}\mathbf{t}_k,\qquad
+\mathbf{d}_k=\mathbf{R}_k^{\top}\mathbf{e}_3,
+\end{equation}
+where $\mathbf{e}_3=(0,0,1)^{\top}$ is the forward axis of a camera, so that $\mathbf{d}_k$ is camera $k$'s forward axis seen from the first camera, and $\mathbf{c}_k$ is the point that camera $k$'s extrinsics map to its own origin. Writing $\mathbf{d}_k=(d_{k,x},d_{k,y},d_{k,z})^{\top}$, the yaw (left/right turn) and pitch (up/down tilt) of camera $k$ relative to the first camera are
+\begin{equation}
+\psi_k=\operatorname{atan2}(d_{k,x},d_{k,z}),\qquad
+\theta_k=\operatorname{atan2}\!\big(-d_{k,y},\,\|(d_{k,x},d_{k,z})\|\big),
+\end{equation}
+with $\psi_k>0$ when the camera turned right and $\theta_k>0$ when it tilted up (the minus sign comes from $y$ pointing down). Here $\operatorname{atan2}(a,b)\in(-\pi,\pi]$ is the two-argument arctangent, i.e.\ the angle of the vector $(b,a)$; unlike $\tan^{-1}(a/b)$, it uses the signs of both arguments, which distinguishes, e.g., a $135^\circ$ left turn from a $45^\circ$ right turn and remains defined when $b=0$. The hint reports the three components of $\mathbf{c}_k$ as right/left, down/up and forward/backward moves, and $\psi_k$, $\theta_k$ in degrees.
+
+Since the LLM is frozen, these numbers have to be given to it in a form it can read. A fixed template $\tau$ translates the poses into a text hint $h=\tau(g(\mathcal{I}))$, with one sentence per image after the first, for example: \emph{``Image~2 camera relative to Image~1 camera: moved 0.42 right, 1.10 forward, 0.05 up; turned 35\textdegree{} right, tilted 3\textdegree{} down.''} VGGT only estimates poses up to scale, so distances are given in arbitrary units, and the hint is presented to the LLM as possibly inaccurate. Text was chosen over geometry tokens because it does not require any training, and because it can be read and checked by a human (and by another LLM, see below). The hinted answer is then obtained with the exact same prompt as the baseline, with the hint inserted before the question: $(r',\hat{y}')=f(\mathcal{I},h\oplus q)$. Both prompts are given word for word in Figure~\ref{fig:idea2-prompts}a; the baseline prompt is the same as the one used for our human vs.\ model comparison in the second assignment, so that only the hint changes between conditions. No training is involved, and both conditions are evaluated by their success rate $\mathbb{E}[\mathbb{1}(\hat{y}=y)]$.
+
+For the judging step, the same LLM is called a second time, in text-only mode, with only a reasoning trace and the hint (no images, no question and no options), and is asked whether a claim of the trace about camera motion or camera positions contradicts the hint, ignoring claims that the geometry does not cover~\citep{zheng2023judging}. The full judge prompt is given in Figure~\ref{fig:idea2-prompts}b; its verdict $J(r,h)\in\{0,1\}$ is read from the last ``Inconsistent: True/False'' line of the reply.
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{0.95\columnwidth}{\raggedright\scriptsize
+\textbf{(a) Answering prompt.} One user message: the text below, then each image preceded by ``Image~$k$:''.\\[3pt]
+\ttfamily
+Answer this spatial reasoning multiple-choice question using the supplied images. Briefly explain the visual evidence you used. Always end with 'Final answer: X', where X is A, B, C, or D.\\[3pt]
+\textrm{\textit{[Hinted condition only:]}}\\
+Estimated camera geometry from a 3D reconstruction model (may be inaccurate). Directions are in Image 1's camera frame (right/up/forward as seen in Image 1); distances are in arbitrary units, comparable only within this question:\\
+- Image 2 camera relative to Image 1 camera: moved 0.00 left, 0.01 forward, 0.00 down; turned 2\textdegree{} left, tilted 1\textdegree{} down.\\[3pt]
+\textrm{\textit{$\langle$question and options$\rangle$}}\\
+Image 1: \textrm{\textit{$\langle$image$\rangle$}}\quad Image 2: \textrm{\textit{$\langle$image$\rangle$}}
+}}\\[4pt]
+\fbox{\parbox{0.95\columnwidth}{\raggedright\scriptsize
+\textbf{(b) Judge prompt.} One text-only user message; no images, question or options.\\[3pt]
+\ttfamily
+You are checking whether a model's reasoning trace agrees with camera geometry that a 3D reconstruction model estimated from the same images. You do not see the images or the question.\\[3pt]
+An inconsistency is a claim in the trace about how the camera moved or rotated between images, or about where one image was taken relative to another, that contradicts the geometry (for example, the trace says the camera turned left while the geometry says it turned right). Claims the geometry does not cover, such as object appearance or where objects are, are not inconsistencies.\\[3pt]
+Geometry:\\
+\textrm{\textit{$\langle$hint block, as in (a)$\rangle$}}\\[3pt]
+Reasoning trace:\\
+\textrm{\textit{$\langle$full trace of the answering call$\rangle$}}\\[3pt]
+Explain in at most two sentences, then end with exactly one line: 'Inconsistent: True' or 'Inconsistent: False'.
+}}
+\caption{Prompts used for Research Idea 2, reproduced word for word (the hint shown is the actual one for task~1). Both calls use greedy decoding, with at most 4{,}096 output tokens for answering and 512 for judging. No system prompt is used.}
+\label{fig:idea2-prompts}
+\end{figure} For this step to be useful, a flagged trace should be wrong more often than an average one, $P(\hat{y}\neq y\mid J=1)>P(\hat{y}\neq y)$, which is why its precision is compared to the base error rate below.
+
+In terms of setup, Qwen2.5-VL-7B-Instruct~\citep{bai2025qwen25vl} was served with vLLM~\citep{kwon2023vllm} on PSC Bridges-2, in bfloat16, with greedy decoding, at most 4{,}096 output tokens and images capped at $1{,}003{,}520$ pixels (around 1{,}280 visual tokens each). The answer is read from a final ``Final answer: X'' line, and answers that cannot be read are counted as wrong. VGGT processed the 1{,}000 tasks in 8 minutes on a single L40S GPU, and the LLM took around 3.5 seconds per task. Before running the full benchmark, the hints were checked by hand on the 12 camera tasks of our 66-task review subset: 7 matched the benchmark's answer, 2 had the right direction but were dominated by 1--3\textdegree{} of noise, 2 were wrong (a static robot-arm scene where no motion was detected, and a left/right sign error on the position), and 1 disagreed with an answer that is contradicted by the benchmark's own explanation (task 929). The hint format was frozen after this check and not tuned on the rest of the benchmark.
+
+\subsection{Results and Discussion}
+\label{sec:idea2-results}
+
+\begin{table}[t]
+\centering
+\small
+\caption{Success rate (\%) of Qwen2.5-VL-7B on the 1{,}000 MMSI-Bench tasks, without and with VGGT hints. $p$: exact McNemar test on paired answers. Only Motion (Cam.) remains significant after a Bonferroni correction over the 11 question types ($\alpha=0.0045$).}
+\label{tab:idea2-main}
+\begin{tabular}{lrrrrr}
+\toprule
+Question type & $n$ & Base & +VGGT & $\Delta$ & $p$ \\
+\midrule
+Overall            & 1000 & 26.5 & 30.0 & +3.5  & .065 \\
+\midrule
+Attribute (Appr.)  & 66   & 19.7 & 31.8 & +12.1 & .169 \\
+Attribute (Meas.)  & 64   & 32.8 & 39.1 & +6.3  & .503 \\
+MSR                & 198  & 21.7 & 31.3 & +9.6  & .027 \\
+Motion (Cam.)      & 74   & 14.9 & \textbf{37.8} & \textbf{+22.9} & \textbf{.001} \\
+Motion (Obj.)      & 76   & 30.3 & 25.0 & $-$5.3 & .557 \\
+Pos. Cam.--Cam.    & 93   & 34.4 & 30.1 & $-$4.3 & .636 \\
+Pos. Cam.--Obj.    & 86   & 30.2 & 25.6 & $-$4.6 & .572 \\
+Pos. Cam.--Reg.    & 83   & 27.7 & 26.5 & $-$1.2 & 1.00 \\
+Pos. Obj.--Obj.    & 94   & 29.8 & 24.5 & $-$5.3 & .473 \\
+Pos. Obj.--Reg.    & 85   & 29.4 & 28.2 & $-$1.2 & 1.00 \\
+Pos. Reg.--Reg.    & 81   & 24.7 & 32.1 & +7.4  & .263 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The results are visible in Table~\ref{tab:idea2-main}. Overall, the hints increase the LLM's success rate from 26.5\% to 30.0\%: 187 answers become correct and 152 become wrong, which gives a 95\% bootstrap interval of $[-0.1,+7.1]$ points on the gain and a McNemar~\citep{mcnemar1947} $p$-value of 0.065. This gain does not come from the answers being easier to read, since the number of unreadable answers goes from 6 to 4, and 185 of the 187 gains replace a wrong letter with the right one. The hints also reduce the answer-letter bias identified in our second assignment: without hints, the LLM picks C for 30.7\% of tasks (against 25.5\% in the benchmark), whereas with hints its choices are close to the benchmark's distribution. Traces are also longer with hints (930 against 613 characters at the median), which might explain part of the gains on question types that the geometry cannot inform, such as Attribute (Appr.), although none of those changes is significant.
+
+Comparing the question types, the only clear gain is on camera motion, where the hint almost directly gives the answer: the success rate goes from 14.9\% (below random guessing) to 37.8\%, with 21 answers fixed and only 4 broken. This makes sense in context, and confirms our hypothesis from the trace analysis that rotation direction is a perception gap that an ``expert'' model can fill.
+
+However, camera-to-camera position tasks, where we expected the largest gain, lose 4.3 points. We reviewed by hand the 22 answers that the hints broke, and in 16 of them the hint actually supports the correct answer: the LLM simply fails to translate it into the answer. These failures fall into three groups. First, position and compass tasks (10): for task 998, the hint states that the camera ``moved 0.96 forward'', and the LLM concludes that the second photo was taken ``behind and to the left''; for task 352, facing west and turning $92^\circ$ right is answered as facing south instead of north. Second, axis conventions (3): some questions define a frame with $+Y$ up and $-Z$ forward, where a left/right turn is a rotation around $Y$, but the LLM associates it with $Z$. Third, reversed reference frames (3): questions such as ``where was the first photo taken relative to me when taking the second one'' require inverting the pose and expressing it from the second camera, which the LLM does not do. Of the 6 remaining tasks, 4 have ``cannot be determined'' as their answer and the hint pushes the LLM to pick a direction anyway, 1 hint is not relevant to the question (whether two photos were taken on the same road), and 1 disagrees with the benchmark's answer (task 928, the sibling of task 929 above). In this sense, the geometry is mostly right, and the bottleneck is the step from numbers to the question's own vocabulary.
+
+\begin{table}[t]
+\centering
+\small
+\caption{LLM judge (Qwen2.5-VL-7B, text only) applied to the traces without and with hints. Prec.: share of flagged answers that are wrong; Err.: base error rate (a useful judge needs Prec.\ $>$ Err.); Recall: share of wrong answers that are flagged. Last column: success rate (\%) of Motion (Cam.) answers that are flagged / not flagged.}
+\label{tab:idea2-judge}
+\begin{tabular}{lrrrrr}
+\toprule
+Traces & Flagged & Prec. & Err. & Recall & Motion (Cam.) \\
+\midrule
+Baseline & 52.1\% & .747 & .735 & .529 & 6.5 / 28.6 \\
+Hinted   & 31.2\% & .689 & .700 & .307 & 5.6 / 48.2 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The judging step gives mixed results (Table~\ref{tab:idea2-judge}). Across the board, its flags carry no information: for both sets of traces, the precision is the same as the base error rate. Reading its explanations shows that the judge does not follow the instructions of Figure~\ref{fig:idea2-prompts}b in four ways: it treats omissions as contradictions (``the trace does not mention the $4^\circ$ left turn''), flags claims that the geometry does not cover (39\% of Attribute (Appr.) tasks are flagged, although these questions are about what objects look like, such as their shape, which camera poses say nothing about), reacts to $1^\circ$ rotations that are within VGGT's noise, and sometimes misreads the hint (treating ``up'' as the opposite of ``back''). When a trace makes an explicit claim about how the camera moved, however, the judge is reliable: for camera motion tasks, only 1 out of 18 flagged answers is correct, against 27 out of 56 non-flagged ones (Fisher exact $p=0.0008$), and the same holds without hints (3/46 against 8/28, $p=0.016$). The judge is therefore a usable error detector exactly where the hints are the most informative, and nowhere else.
+
+We believe that these results remain a first step: they come from a single 7B LLM with greedy decoding and a single run. VGGT also fails on scenes where things move (robot arms, driving scenes) without lowering its confidence, so the confidence cannot be used yet to filter out bad hints.
+
+\subsection{Updated Research Idea}
+\label{sec:idea2-updated}
+
+The midterm results change our idea in one specific way: the geometry provided by VGGT is mostly correct, and what fails is aligning it with the question's reference frame and vocabulary. We will therefore explore three directions for the final report.
+
+First, instead of raw poses, the template $\tau$ will compute what the questions actually ask about, in both directions and from each camera's point of view. The position of camera $j$ as seen from camera $i$ is $\mathbf{p}_{j|i}=\mathbf{R}_i\mathbf{c}_j+\mathbf{t}_i$, which can be turned into front/rear and left/right with a dead zone $\epsilon$ (motions smaller than $\epsilon$ are reported as negligible), along with roll, rotation axes in the conventions used by the benchmark, and compass directions. This makes the hint an explicit alignment between the geometric and linguistic reference frames, and directly targets the three groups of failures above.
+
+Second, since the hints help camera motion tasks but slightly hurt several object-related question types, they will only be added when relevant: $\hat{y}=f(\mathcal{I},\gamma(q)\,h\oplus q)$, where the gate $\gamma(q)\in\{0,1\}$ is predicted from the question wording (our question-type classifier from the second assignment reaches 0.79 macro-F1) or from VGGT's confidence. For object-related tasks, the hints will be extended from cameras to objects, by placing detected objects in 3D with VGGT's point maps and by using LightGlue~\citep{lindenberger2023lightglue} correspondences to check that the same object is seen across views.
+
+Third, the judge will be made more specific. Compared with the prompt of Figure~\ref{fig:idea2-prompts}b, it will state explicitly that omissions are not contradictions and that rotations of a few degrees are noise, and it will first extract the camera claims $\{c_m\}$ of a trace, then compare each of them with the geometry, $J(r,h)=\max_m \mathbb{1}[\mathrm{contradicts}(c_m,h)]$, returning 0 when the trace makes no camera claim or when the motion is below $\epsilon$, and it will only be used on camera-related question types. Flagged answers will then be re-generated with the judge's explanation $e$, $\hat{y}''=f(\mathcal{I},h\oplus q\oplus e)$, and compared with simply asking the LLM a second time without feedback (to make sure the gain does not only come from a second attempt). A stronger judge model will also be tested, to see whether the failures observed above are a matter of model size. In the final report, all these variants will be compared with the midterm results of Table~\ref{tab:idea2-main} (30.0\% overall and 37.8\% on camera motion).

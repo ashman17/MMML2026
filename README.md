@@ -11,7 +11,7 @@ python3 -m venv .venv
 .venv/bin/pip install pyarrow==25.0.1
 .venv/bin/python workflow.py download
 .venv/bin/python workflow.py prepare --sample-only
-.venv/bin/python workflow.py serve --host 127.0.0.1 --port 8766
+.venv/bin/python workflow.py serve --host 127.0.0.1 --port 8766 --provider litellm --model gpt-5.6-terra
 ```
 
 Open `http://127.0.0.1:8766/?reviewer=R1` (or `R2`, `R3`, `R4`) in a browser.

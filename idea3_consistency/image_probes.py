@@ -10,6 +10,14 @@ Variants per question:
            re-associate overlapping views it is told come from one image. Skipped for counting
            questions (objects in the overlap appear twice) and camera-motion questions (crops
            narrow the field of view the motion is judged from).
+  grid   : every image cut into 2x2 overlapping tiles (each 60% x 60% of the image), shown in
+           reading order as "Image k (top-left part):" etc. Same skip rule as split.
+  grid_shuffle : the grid tiles of all images in one random order, labels kept, with a note
+           that the parts are not in order. Tests whether the model follows the labels.
+
+--match_density shrinks every piece's long side to max_side * 0.6, so a piece has the same
+pixel density as the full image it came from (without it, crops of a large image are
+downscaled less than the full image and carry extra detail).
 
 A transform only "confuses" the model if its flip rate is clearly above the jpeg noise floor,
 so the report compares the two on the same questions with an exact McNemar test.
@@ -17,6 +25,7 @@ so the report compares the two on the same questions with an exact McNemar test.
 Usage:
   python image_probes.py --parquet MMSI_Bench.parquet --n 1000 \
       --exclude dev1/predictions.jsonl dev2/predictions.jsonl --out results_probes
+  python image_probes.py ... --variants orig jpeg grid grid_shuffle --match_density
   python image_probes.py --analyze results_probes/predictions.jsonl
 """
 import argparse, io, json, os, random, re, sys
@@ -24,11 +33,16 @@ import argparse, io, json, os, random, re, sys
 from mmsi_consistency import (POST_PROMPT, MockBackend, VLLMBackend, bootstrap_ci, build_messages,
                               extract, img_to_url, load_rows, mcnemar_exact, stratified_sample)
 
-VARIANTS = ["orig", "jpeg", "split"]
+VARIANTS = ["orig", "jpeg", "split", "grid", "grid_shuffle"]
+PIECE_VARIANTS = ["split", "grid", "grid_shuffle"]
 OVERLAP = 0.2  # crops are [0, (1+OVERLAP)/2] and [(1-OVERLAP)/2, 1] of the width
 SPLIT_BLOCK = re.compile(r"\b(how many|count|number of)\b", re.IGNORECASE)
 SPLIT_NOTE = ("Note: each original image is shown as two overlapping parts, its left part and "
               "its right part.\n")
+GRID_NOTE = ("Note: each original image is shown as four overlapping parts: its top-left, "
+             "top-right, bottom-left and bottom-right part.\n")
+SHUFFLE_NOTE = ("The parts are not shown in order; refer to each part by its label.\n")
+GRID_PARTS = ["top-left", "top-right", "bottom-left", "bottom-right"]
 pct = lambda k, n: 100.0 * k / n if n else float("nan")
 
 
@@ -54,26 +68,56 @@ def split_image(b, overlap=OVERLAP):
     return _encode(im.crop((0, 0, cut_l, im.height))), _encode(im.crop((cut_r, 0, w, im.height)))
 
 
+def grid_image(b, overlap=OVERLAP):
+    """Return the 2x2 overlapping tiles (top-left, top-right, bottom-left, bottom-right) as JPEG bytes."""
+    from PIL import Image
+    im = Image.open(io.BytesIO(b)).convert("RGB")
+    w, h = im.size
+    xs = [(0, round(w * (1 + overlap) / 2)), (round(w * (1 - overlap) / 2), w)]
+    ys = [(0, round(h * (1 + overlap) / 2)), (round(h * (1 - overlap) / 2), h)]
+    return [_encode(im.crop((x0, y0, x1, y1))) for y0, y1 in ys for x0, x1 in xs]
+
+
 def splittable(row):
     return not SPLIT_BLOCK.search(row["question"]) and row["question_type"] != "Motion (Cam.)"
 
 
-def probe_messages(rows, max_side):
+def probe_messages(rows, max_side, variants=VARIANTS, match_density=False, seed=0):
+    rng = random.Random(seed)
+    piece_side = round(max_side * (1 + OVERLAP) / 2) if match_density else max_side
     for i, r in enumerate(rows):
         n_img = len(r["images"])
         base = dict(question=r["question"], order=list(range(n_img)), flip=False, note="")
-        yield i, "orig", build_messages(r, base, max_side)
-        yield i, "jpeg", build_messages(dict(r, images=[jpeg_noise(b) for b in r["images"]]),
-                                        base, max_side)
-        if splittable(r):
+        if "orig" in variants:
+            yield i, "orig", build_messages(r, base, max_side)
+        if "jpeg" in variants:
+            yield i, "jpeg", build_messages(dict(r, images=[jpeg_noise(b) for b in r["images"]]),
+                                            base, max_side)
+        if not splittable(r):
+            continue
+        pieces = {}
+        if "split" in variants:
+            pieces["split"] = ([(f"Image {k + 1} ({part} part)", crop)
+                                for k, b in enumerate(r["images"])
+                                for part, crop in zip(["left", "right"], split_image(b))], SPLIT_NOTE)
+        if "grid" in variants or "grid_shuffle" in variants:
+            tiles = [(f"Image {k + 1} ({part} part)", crop) for k, b in enumerate(r["images"])
+                     for part, crop in zip(GRID_PARTS, grid_image(b))]
+            if "grid" in variants:
+                pieces["grid"] = (tiles, GRID_NOTE)
+            if "grid_shuffle" in variants:
+                order = list(range(len(tiles)))
+                while order == sorted(order):
+                    rng.shuffle(order)
+                pieces["grid_shuffle"] = ([tiles[j] for j in order], GRID_NOTE + SHUFFLE_NOTE)
+        for v, (ps, note) in pieces.items():
             content = []
-            for k, b in enumerate(r["images"]):
-                for part, crop in zip(["left", "right"], split_image(b)):
-                    content.append({"type": "text", "text": f"Image {k + 1} ({part} part):"})
-                    content.append({"type": "image_url",
-                                    "image_url": {"url": img_to_url(crop, False, max_side)}})
-            content.append({"type": "text", "text": SPLIT_NOTE + r["question"] + POST_PROMPT})
-            yield i, "split", [{"role": "user", "content": content}]
+            for label, crop in ps:
+                content.append({"type": "text", "text": f"{label}:"})
+                content.append({"type": "image_url",
+                                "image_url": {"url": img_to_url(crop, False, piece_side)}})
+            content.append({"type": "text", "text": note + r["question"] + POST_PROMPT})
+            yield i, v, [{"role": "user", "content": content}]
 
 
 def run(args):
@@ -86,11 +130,12 @@ def run(args):
     with open(os.path.join(args.out, "run_config.json"), "w") as f:
         json.dump(dict({k: v for k, v in vars(args).items() if k != "analyze"}, overlap=OVERLAP),
                   f, indent=2)
-    max_imgs = 2 * max(len(r["images"]) for r in rows)
+    pieces_per_img = 4 if {"grid", "grid_shuffle"} & set(args.variants) else 2
+    max_imgs = pieces_per_img * max(len(r["images"]) for r in rows)
     backend = MockBackend(args.seed) if args.backend == "mock" else VLLMBackend(
         args.model, max_imgs=max_imgs,
         hf_overrides=json.loads(args.hf_overrides) if args.hf_overrides else None)
-    jobs = list(probe_messages(rows, args.max_side))
+    jobs = list(probe_messages(rows, args.max_side, args.variants, args.match_density, args.seed))
     print(f"{len(rows)} questions, {len(jobs)} greedy prompts, up to {max_imgs} images",
           file=sys.stderr)
     outs = backend.generate([c for _, _, c in jobs], n=1, temperature=0.0)
@@ -118,31 +163,41 @@ def analyze(path, bootstrap=1000, seed=0):
              "|---|---|---|---|---|---|"]
     for v in VARIANTS:
         sub = [r for r in recs if v in r["variants"]]
+        if not sub:
+            continue
         fl = [flip(r, v) for r in sub]
         ci = bootstrap_ci(len(sub), lambda ix, x=fl: pct(sum(x[i] for i in ix), len(ix)), bootstrap, rng)
         lines.append(f"| {v} | {len(sub)} | {pct(sum(pred(r, v) == r['answer'] for r in sub), len(sub)):.1f}% | "
                      f"{pct(sum(fl), len(fl)):.1f}% | {ci[0]:.1f}–{ci[1]:.1f} | "
                      f"{sum(pred(r, v) is None for r in sub)} |")
 
-    sub = [r for r in recs if "split" in r["variants"]]
-    a, b, p = mcnemar_exact([flip(r, "split") for r in sub], [flip(r, "jpeg") for r in sub])
-    lines.append(f"\nOn the {len(sub)} questions with a split variant: split flip rate "
-                 f"{pct(sum(flip(r, 'split') for r in sub), len(sub)):.1f}% vs. jpeg noise floor "
-                 f"{pct(sum(flip(r, 'jpeg') for r in sub), len(sub)):.1f}% "
-                 f"(split-only flips={a}, jpeg-only flips={b}, exact McNemar p={p:.4f}).")
-    a, b, p = mcnemar_exact([pred(r, "orig") == r["answer"] for r in sub],
-                            [pred(r, "split") == r["answer"] for r in sub])
-    lines.append(f"Accuracy orig vs split on the same questions: orig-only correct={a}, "
-                 f"split-only correct={b}, exact McNemar p={p:.4f}.")
+    run_pieces = [v for v in PIECE_VARIANTS if any(v in r["variants"] for r in recs)]
+    for v in run_pieces:
+        sub = [r for r in recs if v in r["variants"]]
+        a, b, p = mcnemar_exact([flip(r, v) for r in sub], [flip(r, "jpeg") for r in sub])
+        lines.append(f"\nOn the {len(sub)} questions with a {v} variant: {v} flip rate "
+                     f"{pct(sum(flip(r, v) for r in sub), len(sub)):.1f}% vs. jpeg noise floor "
+                     f"{pct(sum(flip(r, 'jpeg') for r in sub), len(sub)):.1f}% "
+                     f"({v}-only flips={a}, jpeg-only flips={b}, exact McNemar p={p:.4f}).")
+        a, b, p = mcnemar_exact([pred(r, "orig") == r["answer"] for r in sub],
+                                [pred(r, v) == r["answer"] for r in sub])
+        lines.append(f"Accuracy orig vs {v} on the same questions: orig-only correct={a}, "
+                     f"{v}-only correct={b}, exact McNemar p={p:.4f}.")
+    if "grid" in run_pieces and "grid_shuffle" in run_pieces:
+        sub = [r for r in recs if "grid" in r["variants"]]
+        a, b, p = mcnemar_exact([flip(r, "grid_shuffle") for r in sub], [flip(r, "grid") for r in sub])
+        lines.append(f"\nTile order (grid_shuffle vs grid, n={len(sub)}): shuffle-only flips={a}, "
+                     f"grid-only flips={b}, exact McNemar p={p:.4f}.")
 
     lines.append("\n## Flip rate by question type")
-    lines.append("| type | n (split) | jpeg flip | split flip |")
-    lines.append("|---|---|---|---|")
+    lines.append("| type | n (pieces) | jpeg flip | " + " | ".join(f"{v} flip" for v in run_pieces) + " |")
+    lines.append("|---|---|---|" + "---|" * len(run_pieces))
     for t in sorted({r["question_type"] for r in recs}):
-        s = [r for r in sub if r["question_type"] == t]
+        s = [r for r in recs if r["question_type"] == t and run_pieces and run_pieces[0] in r["variants"]]
         if s:
-            lines.append(f"| {t} | {len(s)} | {pct(sum(flip(r, 'jpeg') for r in s), len(s)):.1f}% | "
-                         f"{pct(sum(flip(r, 'split') for r in s), len(s)):.1f}% |")
+            lines.append(f"| {t} | {len(s)} | {pct(sum(flip(r, 'jpeg') for r in s), len(s)):.1f}% | " +
+                         " | ".join(f"{pct(sum(flip(r, v) for r in s), len(s)):.1f}%" for v in run_pieces)
+                         + " |")
     report = "\n".join(lines)
     print(report)
     with open(os.path.join(os.path.dirname(path) or ".", "probe_report.md"), "w") as f:
@@ -160,6 +215,9 @@ if __name__ == "__main__":
     ap.add_argument("--model", default="Qwen/Qwen2.5-VL-7B-Instruct")
     ap.add_argument("--max_side", type=int, default=768)
     ap.add_argument("--hf_overrides", help="model config overrides as JSON (see mmsi_consistency.py)")
+    ap.add_argument("--variants", nargs="+", choices=VARIANTS, default=VARIANTS)
+    ap.add_argument("--match_density", action="store_true",
+                    help="shrink pieces to max_side * 0.6 so they keep the full image's pixel density")
     ap.add_argument("--bootstrap", type=int, default=1000)
     ap.add_argument("--out", default="results_probes")
     a = ap.parse_args()

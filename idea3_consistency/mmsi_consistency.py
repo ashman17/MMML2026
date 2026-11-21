@@ -21,11 +21,13 @@ Usage:
   LITELLM_API_KEY=... python mmsi_consistency.py --parquet MMSI_Bench.parquet --n 100 \
       --backend openai --model gpt-4o --out results_gpt4o/      # CMU LiteLLM gateway
 """
-import argparse, base64, csv, io, json, math, os, random, re, sys
+import argparse, base64, csv, hashlib, io, json, math, os, random, re, sys
 from collections import Counter, defaultdict
 
 POST_PROMPT = ("\nAnswer with the option's letter from the given choices directly. "
                "Enclose the option's letter within ``.")
+LETTER_SCORE_PROMPT = ("\nAnswer with exactly one option letter from A, B, C, or D.\n"
+                       "Answer: ")
 LETTERS = "ABCD"
 
 # ---------------------------------------------------------------- parsing
@@ -48,6 +50,16 @@ def parse_question(q):
 
 def build_question(stem, opts):
     return stem + "Options: " + ", ".join(f"{LETTERS[i]}: {o}" for i, o in enumerate(opts))
+
+def option_letters(question):
+    parsed = parse_question(question)
+    return LETTERS[:len(parsed[1])] if parsed else LETTERS
+
+def letter_score_prompt(letters):
+    if letters == LETTERS:
+        return LETTER_SCORE_PROMPT
+    joined = ", ".join(letters[:-1]) + (", or " if len(letters) > 2 else " or ") + letters[-1]
+    return f"\nAnswer with exactly one option letter from {joined}.\nAnswer: "
 
 # ---------------------------------------------------------------- mirror
 MIRROR_WORDS = re.compile(
@@ -162,16 +174,67 @@ def build_messages(row, v, max_side):
     content.append({"type": "text", "text": v["note"] + v["question"] + POST_PROMPT})
     return [{"role": "user", "content": content}]
 
+def build_score_messages(row, v, max_side):
+    messages = build_messages(row, v, max_side)
+    text = messages[0]["content"][-1]["text"]
+    prompt = letter_score_prompt(option_letters(v["question"]))
+    messages[0]["content"][-1]["text"] = text[:-len(POST_PROMPT)] + prompt
+    return messages
+
+def extract_letter_logprobs(step_logprobs, return_missing=False, letters=LETTERS):
+    """Extract valid option-letter log-probabilities from one vLLM generation step."""
+    found = {}
+    for value in step_logprobs.values():
+        token = getattr(value, "decoded_token", None)
+        logprob = getattr(value, "logprob", None)
+        if token is None and isinstance(value, dict):
+            token, logprob = value.get("decoded_token"), value.get("logprob")
+        token = (token or "").strip()
+        if token in letters and logprob is not None:
+            found[token] = max(found.get(token, float("-inf")), float(logprob))
+    missing = not found
+    if missing:
+        scores = {letter: math.log(1.0 / len(letters)) for letter in letters}
+    else:
+        floor = min(found.values())
+        scores = {letter: found.get(letter, floor) for letter in letters}
+    return (scores, missing) if return_missing else scores
+
 # ---------------------------------------------------------------- backends
 class MockBackend:
-    """Random answers with a left/right bias, for dry runs without a GPU."""
-    def __init__(self, seed=0): self.rng = random.Random(seed)
+    """Deterministic letter scores and sampled answers for dry runs without a GPU."""
+    def __init__(self, seed=0):
+        self.seed = seed
+        self.rng = random.Random(seed)
+    def _letter_scores(self, conv, letters=None):
+        letters = letters or option_letters(conv[0]["content"][-1]["text"])
+        canonical = json.loads(json.dumps(conv))
+        final_text = canonical[0]["content"][-1]["text"]
+        for suffix in (POST_PROMPT, letter_score_prompt(letters)):
+            if final_text.endswith(suffix):
+                final_text = final_text[:-len(suffix)]
+        canonical[0]["content"][-1]["text"] = final_text
+        payload = json.dumps(canonical, sort_keys=True)
+        digest = hashlib.sha256(f"{self.seed}|{payload}".encode()).digest()
+        winner = digest[0] % len(letters)
+        return {letter: (-0.1 if i == winner else -1.2 - digest[i + 1] / 255)
+                for i, letter in enumerate(letters)}
+    def score_letters(self, convs, letter_sets=None):
+        letter_sets = letter_sets or [None] * len(convs)
+        return [(self._letter_scores(conv, letters), False)
+                for conv, letters in zip(convs, letter_sets)]
     def generate(self, convs, n=1, temperature=0.0):
         outs = []
         for c in convs:
-            txt = c[0]["content"][-1]["text"]
-            outs.append([f"``{self.rng.choice('AB' if 'left' in txt.lower() else LETTERS)}``"
-                         for _ in range(n)])
+            letters = option_letters(c[0]["content"][-1]["text"])
+            scores = self._letter_scores(c, letters)
+            if temperature == 0:
+                answers = [max(letters, key=scores.get)] * n
+            else:
+                scale = max(temperature, 1e-6)
+                weights = [math.exp(scores[x] / scale) for x in letters]
+                answers = self.rng.choices(letters, weights=weights, k=n)
+            outs.append([f"``{answer}``" for answer in answers])
         return outs
 
 class VLLMBackend:
@@ -187,6 +250,14 @@ class VLLMBackend:
                             max_tokens=64, seed=0)
         res = self.llm.chat(convs, sp, use_tqdm=True)
         return [[o.text for o in r.outputs] for r in res]
+    def score_letters(self, convs, letter_sets=None):
+        from vllm import SamplingParams
+        sp = SamplingParams(n=1, temperature=0.0, max_tokens=1, logprobs=20, seed=0)
+        res = self.llm.chat(convs, sp, use_tqdm=True)
+        letter_sets = letter_sets or [LETTERS] * len(convs)
+        return [extract_letter_logprobs(r.outputs[0].logprobs[0], return_missing=True,
+                                        letters=letters)
+                for r, letters in zip(res, letter_sets)]
 
 class OpenAIBackend:
     """OpenAI-compatible API backend (e.g. the CMU LiteLLM gateway).

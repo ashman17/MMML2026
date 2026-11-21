@@ -45,10 +45,12 @@ fi
 #    EXCLUDE="dev1/predictions.jsonl dev2/..." samples a held-out test split.
 #    SCRIPT=modality_ablation.py runs the no-image / random-image ablation instead.
 #    HF_OVERRIDES='{"max_dynamic_patch": 6}' keeps InternVL many-image prompts within context.
+#    ARGS passes extra flags, e.g. ARGS="--include dev1/predictions.jsonl" for tgcd.py.
 python ${SCRIPT:-mmsi_consistency.py} \
     --parquet $WORK/MMSI_Bench.parquet \
     --n ${N:-100} \
     ${EXCLUDE:+--exclude $EXCLUDE} \
     ${HF_OVERRIDES:+--hf_overrides "$HF_OVERRIDES"} \
     --model ${MODEL:-Qwen/Qwen2.5-VL-7B-Instruct} \
-    --out "$OUT"
+    --out "$OUT" \
+    $ARGS

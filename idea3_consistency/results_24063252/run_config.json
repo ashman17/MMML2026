@@ -1,0 +1,21 @@
+{
+  "parquet": "/projects/bjjb/vtsai/data/MMSI_Bench.parquet",
+  "selection": null,
+  "n": 700,
+  "seed": 0,
+  "include": [],
+  "exclude": [
+    "/projects/bjjb/vtsai/idea3_dev/results_10648545/predictions.jsonl",
+    "/projects/bjjb/vtsai/idea3_dev/results_10646274/predictions.jsonl"
+  ],
+  "backend": "vllm",
+  "model": "/projects/bjjb/vtsai/idea3_results/train_24047101/merged",
+  "tp": 1,
+  "hf_overrides": null,
+  "max_side": 768,
+  "sc_temp": 0.7,
+  "bootstrap": 1000,
+  "analysis_seed": 0,
+  "no_figures": false,
+  "out": "/projects/bjjb/vtsai/idea3_results/results_24063252"
+}

@@ -1,0 +1,7 @@
+{
+  "aggregation": "prob_mean",
+  "alpha": 1.0,
+  "dev_accuracy": 29.333333333333332,
+  "n_dev": 300,
+  "source": "/projects/bjjb/vtsai/idea3_results/results_23421398/scores.jsonl"
+}

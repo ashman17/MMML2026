@@ -1,0 +1,24 @@
+{
+  "parquet": "/ocean/projects/cis260328p/vtsai/data/MMSI_Bench.parquet",
+  "exclude": [
+    "/ocean/projects/cis260328p/vtsai/idea3_dev/results_10646274/predictions.jsonl",
+    "/ocean/projects/cis260328p/vtsai/idea3_dev/results_10648545/predictions.jsonl"
+  ],
+  "n": 1000,
+  "seed": 0,
+  "backend": "vllm",
+  "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+  "max_side": 768,
+  "hf_overrides": null,
+  "variants": [
+    "orig",
+    "jpeg",
+    "split",
+    "grid",
+    "grid_shuffle"
+  ],
+  "match_density": true,
+  "bootstrap": 1000,
+  "out": "/ocean/projects/cis260328p/vtsai/idea3_results/results_49634420",
+  "overlap": 0.2
+}

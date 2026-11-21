@@ -1,0 +1,7 @@
+{
+  "aggregation": "prob_mean",
+  "alpha": 0.25,
+  "dev_accuracy": 30.0,
+  "n_dev": 300,
+  "source": "/Users/vickyt/MMML2026/idea3_consistency/results_24197216/scores.jsonl"
+}
